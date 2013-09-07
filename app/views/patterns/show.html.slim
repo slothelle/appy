@@ -1,0 +1,17 @@
+h1 #{@pattern.name}
+p #{@pattern.description}
+
+h3 Basic Information
+
+p Needle: #{@pattern.needle}
+p Gauge: #{@pattern.gauge}
+p Yarn shown: #{@pattern.yarn_info}
+p Yarn required: #{@pattern.yarn}
+p Notions: #{@pattern.notions}
+p Finished size(s): #{@pattern.finished_sizes}
+
+- @sections.each do |section|
+  h4 #{section.title}
+  p #{section.description}
+  - section.rows.each do |row|
+    p Row #{row.num} #{row.side}: #{row.instructions}

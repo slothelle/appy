@@ -1,0 +1,5 @@
+= form_for(@user) do |f|
+  = f.text_field :name, placeholder: "Name"
+  = f.email_field :email, placeholder: "email@email.com"
+  = f.password_field :password, placeholder: "********"
+  = f.submit "Sign Up"

@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title lovekn.it
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    .topborder
+    nav
+      ul.nav
+        li.nav <a href="/">appy</a>
+        - if current_user
+          = render "shared/user_menu"
+
+    .section.group
+      .col.span_1_of_5
+      .col.span_3_of_5
+        - if !current_user
+          h1#title appy
+          h2 don't know what this is?
+          h3 that's ok. it's not for you.
+      .col.span_1_of_5
+    .section.group
+      .col.span_1_of_5
+      .col.span_3_of_5
+        #body
+          == yield
+      .col.span_1_of_5

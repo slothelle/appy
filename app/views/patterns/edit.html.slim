@@ -1,0 +1,43 @@
+h1 #{@pattern.name}
+
+h3 Basic Information
+
+p Needle: #{@pattern.needle}
+p Gauge: #{@pattern.gauge}
+p Yarn shown: #{@pattern.yarn_info}
+p Yarn required: #{@pattern.yarn}
+p Notions: #{@pattern.notions}
+p Finished size(s): #{@pattern.finished_sizes}
+
+h3 Description
+p #{@pattern.description}
+
+.new-new
+  .section.group
+    h2 Create Pattern Instructions
+
+    h4 How to Add Sections and Rows
+    ol
+      li Click "Add new section."
+      li Fill out the info, all fields are required.
+      li Click "Save Section."
+      li Click "Add row to this section."
+      li Fill out the information for the row.
+      li Click "Save Row."
+    ul
+      li Repeat steps 4-6 to add new rows to the current section.
+      li To create a new section, repeat steps 1-3.
+    h4.alert VERY IMPORTANT! You have to click SAVE for each section and row before you do anything else.
+    p
+      | Extra info: Sections should be things like  "Set Up", "Body", "Edging", "Written Lace Instructions" etc. Basically anything that should have a subheader, or something that needs additional explanation.
+    h4 Do not add a section for charts!
+    #sections
+      h2 = link_to "Add new section", new_pattern_section_path(@pattern.id), { class: "section-new" }
+
+  .section.group
+    .col.span_1_of_3
+    .col.span_2_of_3
+
+  .section.group
+    .col.span_1_of_3
+    .col.span_2_of_3
