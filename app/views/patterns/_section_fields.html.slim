@@ -41,4 +41,15 @@
 
 .section.group
   = f.link_to_add "Add a new row", :rows, { class: "button-less-attn" }
-  .border
+
+.section.group
+  h4 Closing Intructions for Section
+
+.section.group
+  .col.span_1_of_3
+    = f.label :instructions, "Instructions"
+    br
+    span.small Stuff that makes more sense after ALL of the rows for this section are listed (ex: "Work Rows x-y twice more").
+  .col.span_2_of_3
+    = f.text_area :instructions
+.border
