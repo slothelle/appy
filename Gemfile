@@ -10,8 +10,8 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'nested_form'
 
-# gem 'pdfkit'
-# gem 'wkhtmltopdf-binary'
+gem 'prawn'
+gem 'prawn-rails'
 
 group :assets do
   gem 'sass-rails'
