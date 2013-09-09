@@ -9,46 +9,50 @@ boldy = Rails.root.join('app/assets/fonts/source_sans_pro/SourceSansPro-Bold.ttf
 italicy = Rails.root.join('app/assets/fonts/source_sans_pro/SourceSansPro-Italic.ttf')
 
 # Actual PDF generation
-pdf.font(boldy)
-pdf.text @pattern.name, :size => 24, :align => :center
-
-pdf.font(normaly)
-pdf.text "Designed by Liz Abinante", :size => 10, :align => :center
-pdf.stroke_horizontal_rule
-
-pdf.move_down (10)
-pdf.text @pattern.description, :align => :justify
-
-pdf.move_down 20
-pdf.font(boldy)
-pdf.text "Basic Information", :size => 14, :align => :center
-pdf.font(normaly)
-pdf.table [
-          ["Gauge", @pattern.gauge],
-          ["Needle(s)", @pattern.needle],
-          ["Yarn required", @pattern.yarn],
-          ["Yarn shown", @pattern.yarn_info],
-          ["Notions", @pattern.notions],
-          ["Finished sizes", @pattern.finished_sizes]
-        ],
-        :cell_style => {:padding => 10, :border_width => 0.25},
-        :column_widths => [100, 440]
-
-pdf.move_down 20
-pdf.start_new_page
-
-@pattern.sections.each do |section|
-  pdf.move_down 10
+pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
   pdf.font(boldy)
-  pdf.text section.title, :align => :center, :size => 18
+  pdf.text @pattern.name, :size => 24, :align => :center
+
   pdf.font(normaly)
-  pdf.text section.description
-  section.rows.each do |row|
-    side = "(#{row.side})" if row.side != ""
-    pdf.text "Row #{row.num} #{side}: #{row.instructions}"
-  end
+  pdf.text "Designed by Liz Abinante", :size => 10, :align => :center
+  pdf.stroke_horizontal_rule
+
+  pdf.move_down (10)
+  pdf.text @pattern.description, :align => :justify
+
+  pdf.move_down 20
+  pdf.font(boldy)
+  pdf.text "Basic Information", :size => 14, :align => :center
+  pdf.font(normaly)
+  pdf.table [
+            ["Gauge", @pattern.gauge],
+            ["Needle(s)", @pattern.needle],
+            ["Yarn required", @pattern.yarn],
+            ["Yarn shown", @pattern.yarn_info],
+            ["Notions", @pattern.notions],
+            ["Finished sizes", @pattern.finished_sizes]
+          ],
+          :cell_style => {:padding => 10, :border_width => 0.25},
+          :column_widths => [100, 440]
 end
 
+pdf.start_new_page
+
+pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
+  @pattern.sections.each do |section|
+    pdf.move_down 10
+    pdf.font(boldy)
+    pdf.text section.title, :align => :center, :size => 18
+    pdf.font(normaly)
+    pdf.text section.description
+    section.rows.each do |row|
+      side = "(#{row.side})" if row.side != ""
+      pdf.text "Row #{row.num} #{side}: #{row.instructions}"
+    end
+    pdf.move_down 17
+    pdf.text section.instructions
+  end
+end
 
 # Header
 pdf.repeat(2..10) do
