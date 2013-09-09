@@ -11,7 +11,7 @@ gem 'slim-rails'
 gem 'nested_form'
 
 gem 'prawn'
-gem 'prawnto'
+gem 'prawn-rails'
 
 group :assets do
   gem 'sass-rails'
