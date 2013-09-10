@@ -16,6 +16,13 @@ h2 Pattern Information
 
   .section.group
     .col.span_1_of_3
+      h3 Images
+    .col.span_2_of_3
+      = f.fields_for :images
+      = f.link_to_add "Add a new image", :images, { class: "button-attn" }
+
+  .section.group
+    .col.span_1_of_3
       = f.label :gauge, "Gauge"
     .col.span_2_of_3
       = f.text_field :gauge, value: "x sts/x rows per 4 in/10 cm"
