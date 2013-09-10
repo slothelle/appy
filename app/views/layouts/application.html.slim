@@ -35,15 +35,14 @@ html lang="en"
     .container-fluid
 
       .row-fluid
-        .span3
+        .span2
           - if current_user
             .well.sidebar-nav
               ul.nav.nav-list
                 li.nav-header Awesome Menu
-                li= link_to "Link 1", "/path1"
-                li= link_to "Link 2", "/path2"
-                li= link_to "Link 3", "/path3"
-        .span9
+                li= link_to "<i class='icon-book'></i> Pattern Library".html_safe, patterns_path
+                li= link_to "<i class='icon-plus-sign'></i> New pattern".html_safe, new_pattern_path
+        .span10
           = bootstrap_flash
           = yield
 
