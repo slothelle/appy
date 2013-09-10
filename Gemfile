@@ -9,7 +9,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'nested_form'
-
+gem "paperclip", "~> 3.0"
 gem 'prawn'
 gem 'prawn-rails'
 
