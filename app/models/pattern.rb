@@ -5,6 +5,7 @@ class Pattern < ActiveRecord::Base
   has_many :rows, :through => :sections
   has_many :images
 
+  accepts_nested_attributes_for :images
   accepts_nested_attributes_for :sections
   accepts_nested_attributes_for :rows
 end
