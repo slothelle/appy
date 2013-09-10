@@ -11,10 +11,13 @@ gem 'slim-rails'
 gem 'nested_form'
 gem "paperclip", "~> 3.0"
 gem 'prawn'
+gem 'therubyracer'
 gem 'prawn-rails'
+gem "twitter-bootstrap-rails"
 
 group :assets do
   gem 'sass-rails'
+  gem 'less-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end

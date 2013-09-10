@@ -1,12 +1,12 @@
-.section.group
+.row
   = f.link_to_remove "Remove below image"
 
-.section.group
-  .col.span_1_of_3
+.row
+  .span4
     = f.label :photo, "Photo"
     br
     span.small JPG only! One at a time.
-  .col.span_2_of_3
+  .span8
     = f.file_field :photo
 
 .border

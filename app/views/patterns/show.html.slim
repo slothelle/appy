@@ -1,7 +1,4 @@
-p Download the #{link_to "PDF", pattern_path(@pattern, :format => "pdf")}
-
 h1 #{@pattern.name}
-p #{@pattern.description}
 
 h3 Basic Information
 
@@ -12,8 +9,14 @@ p Yarn required: #{@pattern.yarn}
 p Notions: #{@pattern.notions}
 p Finished size(s): #{@pattern.finished_sizes}
 
-- @sections.each do |section|
+h3 Description
+p #{@pattern.description}
+
+h3 Instructions
+- @pattern.sections.each do |section|
   h4 #{section.title}
   p #{section.description}
   - section.rows.each do |row|
-    p Row #{row.num} #{row.side}: #{row.instructions}
+    p Row #{row.num} #{row.side if row.side != ""}: #{row.instructions}
+  p #{section.instructions}
+end

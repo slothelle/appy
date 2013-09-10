@@ -1,55 +1,57 @@
-.section.group
-  h3 New Section
+.row
+  h3 Section
   = f.link_to_remove "Remove below section"
 
-.section.group
-  .col.span_1_of_3
+.row
+  .span4
     = f.label :number, "Number"
     br
     span.small Number them in order ("1", "2")
-  .col.span_2_of_3
+  .span8
     = f.text_field :number
 
-.section.group
-  .col.span_1_of_3
+.row
+  .span4
     = f.label :title, "Title"
     br
     span.small Example: "Set Up", "Body", etc, etc
-  .col.span_2_of_3
+  .span8
     = f.text_field :title
 
-.section.group
-  .col.span_1_of_3
+.row
+  .span4
     = f.label :description, "Description"
     br
     span.small Special instructions ("work using smaller needles") or an introduction.
-  .col.span_2_of_3
+  .span8
     = f.text_area :description
 
-.section.group
+.row
   h4 Section Rows
+
+.row
+  .span2
+    = f.label :side, "RS or WS", { class: "small" }
+  .span2
+    = f.label :num, "Number", { class: "small" }
+  .span6
+    = f.label :instructions, "Instructions", { class: "small" }
+  .span2
+
+.row
   = f.fields_for :rows
 
-.section.group
-  .col.span_1_of_8
-    = f.label :side, "RS or WS", { class: "small" }
-  .col.span_1_of_8
-    = f.label :num, "Number", { class: "small" }
-  .col.span_5_of_8
-    = f.label :instructions, "Instructions", { class: "small" }
-  .col.span_1_of_8
-
-.section.group
+.row
   = f.link_to_add "Add a new row", :rows, { class: "button-less-attn" }
 
-.section.group
+.row
   h4 Closing Intructions for Section
 
-.section.group
-  .col.span_1_of_3
+.row
+  .span4
     = f.label :instructions, "Instructions"
     br
     span.small Stuff that makes more sense after ALL of the rows for this section are listed (ex: "Work Rows x-y twice more").
-  .col.span_2_of_3
+  .span8
     = f.text_area :instructions
 .border

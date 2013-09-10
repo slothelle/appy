@@ -1,3 +1,5 @@
 - @patterns.each do |pattern|
   h1 #{pattern.name}
   p = link_to "Edit", edit_pattern_path(pattern.id)
+  p = link_to "View plain text", pattern_path(pattern.id)
+  p = link_to "View PDF", pattern_path(pattern.id, :format => "pdf")

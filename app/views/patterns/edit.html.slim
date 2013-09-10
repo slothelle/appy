@@ -1,43 +1,73 @@
-h1 #{@pattern.name}
+h1 Edit #{@pattern.name}
 
-h3 Basic Information
+p All fields are required. Syntax and grammar matter, a PDF will be generated from your input. You will have to clear the existing values to put in the information for this pattern. Please use the existing values as a guideline for formatting. You're just creating the pattern right now, you'll be adding the section information and row-by-row instructions on a subsequent page.
 
-p Needle: #{@pattern.needle}
-p Gauge: #{@pattern.gauge}
-p Yarn shown: #{@pattern.yarn_info}
-p Yarn required: #{@pattern.yarn}
-p Notions: #{@pattern.notions}
-p Finished size(s): #{@pattern.finished_sizes}
+.row
+  .span4
+  .span8
 
-h3 Description
-p #{@pattern.description}
+h2 Pattern Information
+= nested_form_for @pattern do |f|
+  .row
+    .span4
+      = f.label :name, "Pattern Name"
+    .span8
+      = f.text_field :name
 
-.new-new
-  .section.group
-    h2 Create Pattern Instructions
+  .row
+    .span4
+      = f.label :gauge, "Gauge"
+    .span8
+      = f.text_field :gauge
 
-    h4 How to Add Sections and Rows
-    ol
-      li Click "Add new section."
-      li Fill out the info, all fields are required.
-      li Click "Save Section."
-      li Click "Add row to this section."
-      li Fill out the information for the row.
-      li Click "Save Row."
-    ul
-      li Repeat steps 4-6 to add new rows to the current section.
-      li To create a new section, repeat steps 1-3.
-    h4.alert VERY IMPORTANT! You have to click SAVE for each section and row before you do anything else.
-    p
-      | Extra info: Sections should be things like  "Set Up", "Body", "Edging", "Written Lace Instructions" etc. Basically anything that should have a subheader, or something that needs additional explanation.
-    h4 Do not add a section for charts!
-    #sections
-      h2 = link_to "Add new section", new_pattern_section_path(@pattern.id), { class: "section-new" }
+  .row
+    .span4
+      = f.label :needle, "Needle"
+    .span8
+      = f.text_field :needle
 
-  .section.group
-    .col.span_1_of_3
-    .col.span_2_of_3
+  .row
+    .span4
+      = f.label :yarn_info, "Yarn Shown"
+    .span8
+      = f.text_field :yarn_info
 
-  .section.group
-    .col.span_1_of_3
-    .col.span_2_of_3
+  .row
+    .span4
+      = f.label :yarn, "Yarn Requirements"
+    .span8
+      = f.text_field :yarn
+
+  .row
+    .span4
+      = f.label :notions, "Notions"
+      br
+      span.small List in order used.
+    .span8
+      = f.text_field :notions
+
+  .row
+    .span4
+      = f.label :finished_sizes, "Finished Sizes"
+      br
+      span.small You may have to wing it here.
+    .span8
+      = f.text_area :finished_sizes
+
+  .row
+    .span4
+      = f.label :description, "Description"
+      br
+      span.small Keep it short, up to 3 sentences.
+    .span8
+      = f.text_area :description
+
+  .row
+    h2 Sections
+    = f.fields_for :sections
+    = f.link_to_add "Add a new section", :sections, { class: "button-attn" }
+
+  .row
+    .border
+    .center
+      = f.submit "Update Pattern"

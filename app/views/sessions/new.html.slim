@@ -2,5 +2,6 @@
 
 = form_for(:session, url: sessions_path) do |f|
   = f.email_field :email, placeholder: "email@email.com"
+  br
   = f.password_field :password, placeholder: "********"
   = f.submit "Login"
