@@ -10,6 +10,8 @@ italicy = Rails.root.join('app/assets/fonts/source_sans_pro/SourceSansPro-Italic
 
 # Actual PDF generation
 pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
+  pdf.image open(Image.find(11).photo.path), :position => :center
+  pdf.image open(Image.find(12).photo.path(:thumb)), :position => :center
   pdf.font(boldy)
   pdf.text @pattern.name, :size => 24, :align => :center
 
@@ -18,9 +20,17 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
   pdf.stroke_horizontal_rule
 
   pdf.move_down (10)
+  pdf.image open("#{@pattern.images.first.photo.path(:large)}")
+  pdf.move_down (10)
+  pdf.stroke_horizontal_rule
+  pdf.move_down (10)
   pdf.text @pattern.description, :align => :justify
 
-  pdf.move_down 20
+end
+
+pdf.start_new_page
+
+pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
   pdf.font(boldy)
   pdf.text "Basic Information", :size => 14, :align => :center
   pdf.font(normaly)
@@ -31,26 +41,36 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
             ["Yarn shown", @pattern.yarn_info],
             ["Notions", @pattern.notions],
             ["Finished sizes", @pattern.finished_sizes]
-          ],
-          :cell_style => {:padding => 10, :border_width => 0.25},
-          :column_widths => [100, 440]
-end
+            ],
+            :cell_style => { :padding => 5, :border_width => 0},
+            :column_widths => [100, 440]
+  pdf.move_down(20)
+  pdf.font(boldy)
+  pdf.text "Instructions", :align => :center, :size => 18
+  pdf.font(normaly)
 
-pdf.start_new_page
-
-pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
   @pattern.sections.each do |section|
-    pdf.move_down 10
     pdf.font(boldy)
-    pdf.text section.title, :align => :center, :size => 18
+    pdf.text section.title, :size => 14
     pdf.font(normaly)
     pdf.text section.description
-    section.rows.each do |row|
-      side = "(#{row.side})" if row.side != ""
-      pdf.text "Row #{row.num} #{side}: #{row.instructions}"
-    end
+    rows = section.rows.map { |row| ["Row #{row.num}:", row.instructions] }
+    pdf.table rows, :cell_style => {:padding => 5, :border_width => 0 },
+            :column_widths => [100, 440]
     pdf.move_down 17
     pdf.text section.instructions
+    pdf.move_down 10
+  end
+
+  if @pattern.images.count > 1
+    pdf.start_new_page
+    pdf.font(boldy)
+    pdf.text "Additional Images", :align => :center, :size => 18
+    @pattern.images.each do |img|
+      pdf.image open("#{img.photo.path(:medium)}"), :position => :center
+      pdf.move_down 10
+    end
+    pdf.font(normaly)
   end
 end
 

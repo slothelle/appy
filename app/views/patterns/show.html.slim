@@ -1,4 +1,6 @@
 h1 #{@pattern.name}
+- @pattern.images.each do |img|
+  = image_tag img.photo(:large)
 
 h3 Basic Information
 
