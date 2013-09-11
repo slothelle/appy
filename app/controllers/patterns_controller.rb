@@ -1,8 +1,6 @@
 class PatternsController < ApplicationController
   def new
     @pattern = Pattern.new
-    @section = Section.new
-    @row = Row.new
   end
 
   def index

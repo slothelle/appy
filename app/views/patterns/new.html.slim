@@ -4,25 +4,17 @@
 
     p.muted All fields are required. Syntax and grammar matter, a PDF will be generated from your input. You will have to clear the existing values to put in the information for this pattern.
 
-    p.text-error Please use the existing values as a guideline for formatting.
+    .alert.alert-error Please use the existing values as a guideline for formatting.
     hr
 
 .row
   .span12
     h3 The Basics
-    = nested_form_for(@pattern, html: { class: "new_model form-horizontal" } ) do |f|
+    = nested_form_for(@pattern, html: { multipart: true, class: "new_model form-horizontal" } ) do |f|
       .control-group
         = f.label :name, "Pattern Name", { class: "control-label" }
         .controls
           = f.text_field :name, value: "Traveling Woman", class: "span12"
-
-      p.muted Add one image at a time in JPG format only.
-      .row
-        .span1
-        .span11
-          = f.fields_for :images
-          = f.link_to_add "Add a new image", :images, { class: "btn btn-info" }
-          p
 
       = f.label :description, "<h4>Description</h4>".html_safe
       = f.text_area :description, class: "span12", value: "This quick and easy basketweave cowl can be knit in nearly any yarn weight, and is suitable for beginning knitters. This cowl reminds me of my days spent weaving and continuously reminds me of my forgotten hobby. Worked in the round, the reversible stitch is easy to memorize or adapt to other yarn weights. Instructions are also given for an infinity cowl, which can be worn looped around your neck multiple times."
@@ -65,4 +57,4 @@
       = f.link_to_add "Add a new section", :sections, { class: "btn btn-info" }
 
       hr
-      = f.submit "Create Pattern", { class: "btn btn-success" }
+      = f.submit "Create Pattern", { class: "btn btn-success btn-block btn-large" }

@@ -1,5 +1,25 @@
+h2 <i class='icon-book'></i> Pattern Library
+
 - @patterns.each do |pattern|
-  h1 #{pattern.name}
-  p = link_to "Edit", edit_pattern_path(pattern.id)
-  p = link_to "View plain text", pattern_path(pattern.id)
-  p = link_to "View PDF", pattern_path(pattern.id, :format => "pdf")
+  .row
+    .span1
+    .span2
+      br
+      .btn-group
+        a.btn.dropdown-toggle data-toggle="dropdown" href="#" Edit <span class="caret"></span>
+        ul.dropdown-menu
+          li = link_to "<i class='icon-pencil'></i> &nbsp; Edit pattern".html_safe, edit_pattern_path(pattern.id)
+          li = link_to "<i class='icon-camera'></i> &nbsp; Add image".html_safe, new_pattern_image_path(pattern)
+      span &nbsp;
+      .btn-group
+        a.btn.dropdown-toggle.btn-info data-toggle="dropdown" href="#" View <span class="caret"></span>
+        ul.dropdown-menu
+          li = link_to "<i class='icon-bold'></i> &nbsp; Plain text".html_safe, pattern_path(pattern.id)
+          li = link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf")
+    .span9
+      h4 #{pattern.name}
+      p.muted Created #{pretty_time(pattern.created_at)} &bull; Last updated #{pretty_time(pattern.updated_at)}
+      small #{pattern.description}
+  hr
+
+h3 Don't see what you're looking for? #{link_to "Add a new pattern", new_pattern_path, { class: "btn btn-success" }}

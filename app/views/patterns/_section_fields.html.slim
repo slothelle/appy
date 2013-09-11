@@ -1,6 +1,4 @@
-h4 New Section
-.pull-right
-  = f.link_to_remove "Remove section", { class: "btn btn-danger" }
+h4 New Section #{f.link_to_remove "Remove section", { class: "btn btn-danger btn-mini" }}
 
 .control-group
   = f.label :number, "Number <br><span class='muted'>Number them in order.</span>".html_safe, { class: "control-label" }
@@ -18,11 +16,9 @@ h4 New Section
     = f.text_area :description, class: "span12"
 
 h5 Section Rows
-p.muted End each 'Instructions' box with a period.
-p.text-error Include (RS) or (WS) with the row number for the first of each.
-p.muted Unless the pattern is worked in the round, then wooo, who cares?
+.alert.alert-danger End each 'Instructions' box with a period. Include (RS) or (WS) with the row number for the first of each. Unless the pattern is worked in the round, then wooo, who cares?
 
-= f.link_to_add "Add a new row", :rows, { class: "btn btn-info" }
+= f.link_to_add "Add a new row", :rows, { class: "btn btn-info btn-small" }
 = f.fields_for :rows
 
 h4 Closing Intructions for Section

@@ -5,6 +5,4 @@ class Section < ActiveRecord::Base
   has_many :rows
 
   accepts_nested_attributes_for :rows
-  # Double check this validation
-  # validate_presence_of_pattern_id :on => :update
 end

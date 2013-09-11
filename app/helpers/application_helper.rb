@@ -14,4 +14,8 @@ module ApplicationHelper
   def end_session
     session[:current_user_id] = nil
   end
+
+  def pretty_time(time)
+    time.strftime("%m/%d/%Y")
+  end
 end

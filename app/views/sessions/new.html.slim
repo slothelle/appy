@@ -1,8 +1,17 @@
 = render "shared/errors"
 
-= form_for(:session, url: sessions_path) do |f|
-  = f.email_field :email, placeholder: "email@email.com"
-  br
-  = f.password_field :password, placeholder: "********"
-  br
-  = f.submit "Login"
+= form_for(:session, url: sessions_path, html: { class: "new_model form-horizontal" } ) do |f|
+  .control-group
+    = f.label :email, { class: "control-label" }
+    .controls
+      = f.email_field :email, placeholder: "email@email.com"
+
+  .control-group
+    = f.label :password, { class: "control-label" }
+    .controls
+      = f.password_field :password, placeholder: "********"
+
+  .control-group
+    span.control-label
+    .controls
+      = f.submit "Login", class: "btn btn-warning"
