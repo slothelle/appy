@@ -25,21 +25,15 @@ html lang="en"
           .container-fluid.nav-collapse
             ul.nav
               - if current_user
+                li= link_to "<i class='icon-book'></i> Pattern Library".html_safe, patterns_path
+                li= link_to "<i class='icon-plus-sign'></i> New pattern".html_safe, new_pattern_path
                 li= link_to "Logout", log_out_path, method: :delete
 
     .container-fluid
 
       .row-fluid
         .span2
-          - if current_user
-            .well.sidebar-nav
-              ul.nav.nav-list
-                li.nav-header Awesome Menu
-                li= link_to "<i class='icon-book'></i> Pattern Library".html_safe, patterns_path
-                li= link_to "<i class='icon-plus-sign'></i> New pattern".html_safe, new_pattern_path
-        .span10
+        .span8
           = bootstrap_flash
           = yield
-
-      footer
-        p &copy; Liz Abinante, feministy.com, etc, etc 2013
+        .span2

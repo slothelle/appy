@@ -1,57 +1,33 @@
-.row
-  h3 Section
-  = f.link_to_remove "Remove below section"
+h4 New Section
+.pull-right
+  = f.link_to_remove "Remove section", { class: "btn btn-danger" }
 
-.row
-  .span4
-    = f.label :number, "Number"
-    br
-    span.small Number them in order ("1", "2")
-  .span8
-    = f.text_field :number
+.control-group
+  = f.label :number, "Number <br><span class='muted'>Number them in order.</span>".html_safe, { class: "control-label" }
+  .controls
+    = f.text_field :number, class: "span1"
 
-.row
-  .span4
-    = f.label :title, "Title"
-    br
-    span.small Example: "Set Up", "Body", etc, etc
-  .span8
-    = f.text_field :title
+.control-group
+  = f.label :title, "Title <br><span class='muted'>Example:<br>Set Up, Body, etc, etc.</span>".html_safe, { class: "control-label" }
+  .controls
+    = f.text_field :title, class: "span12"
 
-.row
-  .span4
-    = f.label :description, "Description"
-    br
-    span.small Special instructions ("work using smaller needles") or an introduction.
-  .span8
-    = f.text_area :description
+.control-group
+  = f.label :description, "Description <br><span class='muted'>Special instructions (work using smaller needles) or an introduction.</span>".html_safe, { class: "control-label" }
+  .controls
+    = f.text_area :description, class: "span12"
 
-.row
-  h4 Section Rows
+h5 Section Rows
+p.muted End each 'Instructions' box with a period.
+p.text-error Include (RS) or (WS) with the row number for the first of each.
+p.muted Unless the pattern is worked in the round, then wooo, who cares?
 
-.row
-  .span2
-    = f.label :side, "RS or WS", { class: "small" }
-  .span2
-    = f.label :num, "Number", { class: "small" }
-  .span6
-    = f.label :instructions, "Instructions", { class: "small" }
-  .span2
+= f.link_to_add "Add a new row", :rows, { class: "btn btn-info" }
+= f.fields_for :rows
 
-.row
-  = f.fields_for :rows
-
-.row
-  = f.link_to_add "Add a new row", :rows, { class: "button-less-attn" }
-
-.row
-  h4 Closing Intructions for Section
-
-.row
-  .span4
-    = f.label :instructions, "Instructions"
-    br
-    span.small Stuff that makes more sense after ALL of the rows for this section are listed (ex: "Work Rows x-y twice more").
-  .span8
-    = f.text_area :instructions
-.border
+h4 Closing Intructions for Section
+.control-group
+  = f.label :instructions, "Instructions <br><span class='muted'>Stuff that makes more sense after ALL of the rows for this section are listed (ex: Work Rows x-y twice more).</span>".html_safe, { class: "control-label" }
+  .controls
+    = f.text_area :instructions, class: "span12"
+hr

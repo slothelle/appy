@@ -1,10 +1,11 @@
-.row
-  .span2
-    = f.text_field :side
-  .span2
-    = f.text_field :num
-  .span6
-    = f.text_field :instructions
-  .span2
-    = f.link_to_remove "Remove row"
-
+table.table
+  thead
+    tr
+      th.span1 Number
+      th.span9 Instructions
+      th.span2
+  tbody
+    tr
+      td = f.text_field :num, value: "1", class: "span12"
+      td = f.text_field :instructions, value: "*k1, p2, rpt from * to end.", class: "span12"
+      td = f.link_to_remove "Remove row", { class: "btn btn-danger" }

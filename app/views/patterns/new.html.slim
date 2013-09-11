@@ -1,80 +1,68 @@
-h1 Create a new pattern
+.row
+  .span12
+    h1 Create a new pattern
 
-p All fields are required. Syntax and grammar matter, a PDF will be generated from your input. You will have to clear the existing values to put in the information for this pattern. Please use the existing values as a guideline for formatting. You're just creating the pattern right now, you'll be adding the section information and row-by-row instructions on a subsequent page.
+    p.muted All fields are required. Syntax and grammar matter, a PDF will be generated from your input. You will have to clear the existing values to put in the information for this pattern.
+
+    p.text-error Please use the existing values as a guideline for formatting.
+    hr
 
 .row
-  .span4
-  .span8
+  .span12
+    h3 The Basics
+    = nested_form_for(@pattern, html: { class: "new_model form-horizontal" } ) do |f|
+      .control-group
+        = f.label :name, "Pattern Name", { class: "control-label" }
+        .controls
+          = f.text_field :name, value: "Traveling Woman", class: "span12"
 
-h2 Pattern Information
-= nested_form_for @pattern do |f|
-  .row
-    .span4
-      = f.label :name, "Pattern Name"
-    .span8
-      = f.text_field :name, value: "Traveling Woman"
+      p.muted Add one image at a time in JPG format only.
+      .row
+        .span1
+        .span11
+          = f.fields_for :images
+          = f.link_to_add "Add a new image", :images, { class: "btn btn-info" }
+          p
 
-  .row
-    .span4
-      h3 Images
-    .span8
-      = f.fields_for :images
-      = f.link_to_add "Add a new image", :images, { class: "button-attn" }
+      = f.label :description, "<h4>Description</h4>".html_safe
+      = f.text_area :description, class: "span12", value: "This quick and easy basketweave cowl can be knit in nearly any yarn weight, and is suitable for beginning knitters. This cowl reminds me of my days spent weaving and continuously reminds me of my forgotten hobby. Worked in the round, the reversible stitch is easy to memorize or adapt to other yarn weights. Instructions are also given for an infinity cowl, which can be worn looped around your neck multiple times."
 
-  .row
-    .span4
-      = f.label :gauge, "Gauge"
-    .span8
-      = f.text_field :gauge, value: "x sts/x rows per 4 in/10 cm"
+      hr
+      h3 Materials
+      .control-group
+        = f.label :gauge, "Gauge", { class: "control-label" }
+        .controls
+          = f.text_field :gauge, value: "x sts/x rows per 4 in/10 cm", class: "span12"
 
-  .row
-    .span4
-      = f.label :needle, "Needle"
-    .span8
-      = f.text_field :needle, value: "US 6 (4.0mm) 16 in circular"
+      .control-group
+        = f.label :needle, "Needle", { class: "control-label" }
+        .controls
+          = f.text_field :needle, value: "US 6 (4.0mm) 16 in circular", class: "span12"
 
-  .row
-    .span4
-      = f.label :yarn_info, "Yarn Shown"
-    .span8
-      = f.text_field :yarn_info, value: "Company Brand (x% Fiber, x yards/x meters per x grams). Shown in color."
+      .control-group
+        = f.label :yarn_info, "Yarn Shown", { class: "control-label" }
+        .controls
+          = f.text_field :yarn_info, value: "Company Brand (x% Fiber, x yards/x meters per x grams). Shown in color.", class: "span12"
 
-  .row
-    .span4
-      = f.label :yarn, "Yarn Requirements"
-    .span8
-      = f.text_field :yarn, value: "Approximately x yards/x meters [WEIGHT] weight yarn."
+      .control-group
+        = f.label :yarn, "Yarn Requirements", { class: "control-label" }
+        .controls
+          = f.text_field :yarn, value: "Approximately x yards/x meters [WEIGHT] weight yarn.", class: "span12"
 
-  .row
-    .span4
-      = f.label :notions, "Notions"
-      br
-      span.small List in order used.
-    .span8
-      = f.text_field :notions, value: "1 stitch marker, darning needle."
+      .control-group
+        = f.label :notions, "Notions <br><span class='muted'>List in order used</span>".html_safe, { class: "control-label" }
+        .controls
+          = f.text_field :notions, value: "1 stitch marker, darning needle.", class: "span12"
 
-  .row
-    .span4
-      = f.label :finished_sizes, "Finished Sizes"
-      br
-      span.small You may have to wing it here.
-    .span8
-      = f.text_area :finished_sizes, value: "Small: x in/x cm wingspan, x in/x cm deep. Large: x in/x cm wingspan, x in/x cm deep."
+      hr
+      = f.label :finished_sizes, "<h3>Finished Sizes</h3>".html_safe
+      p.muted Separate each size with a line break.
+      = f.text_area :finished_sizes, class: "span12", value: "Small: x in/x cm wingspan, x in/x cm deep."
 
-  .row
-    .span4
-      = f.label :description, "Description"
-      br
-      span.small Keep it short, up to 3 sentences.
-    .span8
-      = f.text_area :description, value: "This quick and easy basketweave cowl can be knit in nearly any yarn weight, and is suitable for beginning knitters. This cowl reminds me of my days spent weaving and continuously reminds me of my forgotten hobby. Worked in the round, the reversible stitch is easy to memorize or adapt to other yarn weights. Instructions are also given for an infinity cowl, which can be worn looped around your neck multiple times."
+      hr
+      h3 Sections
+      = f.fields_for :sections
+      = f.link_to_add "Add a new section", :sections, { class: "btn btn-info" }
 
-  .row
-    h2 Sections
-    = f.fields_for :sections
-    = f.link_to_add "Add a new section", :sections, { class: "button-attn" }
-
-  .row
-    .border
-    .center
-      = f.submit "Create Pattern"
+      hr
+      = f.submit "Create Pattern", { class: "btn btn-success" }
