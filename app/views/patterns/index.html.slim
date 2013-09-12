@@ -10,6 +10,7 @@ h2 <i class='icon-book'></i> Pattern Library
         ul.dropdown-menu
           li = link_to "<i class='icon-pencil'></i> &nbsp; Edit pattern".html_safe, edit_pattern_path(pattern.id)
           li = link_to "<i class='icon-camera'></i> &nbsp; Add image".html_safe, new_pattern_image_path(pattern)
+          / # li = link_to "Add abbreiations".html_safe, new_pattern_abbreviations_path(pattern.id)
       span &nbsp;
       .btn-group
         a.btn.dropdown-toggle.btn-info data-toggle="dropdown" href="#" View <span class="caret"></span>

@@ -1,6 +1,7 @@
 class PatternsController < ApplicationController
   def new
     @pattern = Pattern.new
+    @abbreviations = Abbreviation.all
   end
 
   def index

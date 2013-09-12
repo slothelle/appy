@@ -1,6 +1,7 @@
 Loveknit::Application.routes.draw do
   resources :users
   resources :patterns do
+    resources :abbreviations
     resources :images
     resources :sections do
       resources :rows

@@ -10,8 +10,6 @@ italicy = Rails.root.join('app/assets/fonts/source_sans_pro/SourceSansPro-Italic
 
 # Actual PDF generation
 pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
-  pdf.image open(Image.find(11).photo.path), :position => :center
-  pdf.image open(Image.find(12).photo.path(:thumb)), :position => :center
   pdf.font(boldy)
   pdf.text @pattern.name, :size => 24, :align => :center
 
