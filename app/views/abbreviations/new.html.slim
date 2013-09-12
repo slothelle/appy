@@ -1,0 +1,7 @@
+.row
+  .span12
+    h1 New Abbreviations
+    .alert.alert-block This is only for adding new abbreivations. If the pattern already has abbreviations, you're in the wrong place.
+    .alert.alert-info Adding abbreivations to <strong>#{@pattern.name}</strong>
+
+- @abbreviations.each do |a|

@@ -1,0 +1,11 @@
+table.table
+  thead
+    tr
+      th Abbreviation
+      th Definition
+      th
+  tbody
+    tr
+      td.span1 = f.text_field :stitch, class: "span12"
+      td.span10 = f.text_field :definition, class: "span12"
+      td.span1 = f.link_to_remove "Remove", { class: "btn btn-danger btn-mini" }
