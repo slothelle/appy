@@ -6,9 +6,7 @@ PDFs are generated using Prawn.
 
 #### to do
 
-- add image uploading
-- format pdf
+- format pdf (maybe make it prettier? I kinda like it so far)
 - figure out sizing (tables? inline? multiple PDFs?)
-- edit page
-- overall app style
 - moar tests (always moar tests)
+- charts and legends (charts WIP, legends done)
