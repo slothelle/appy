@@ -19,7 +19,4 @@ class ImagesController < ApplicationController
   def destroy
     Image.destroy(params[:id])
   end
-
-  def show
-  end
 end

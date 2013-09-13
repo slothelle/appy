@@ -1,7 +1,7 @@
 .row
   .span12
     h1 New Image for #{@pattern.name}
-    .alert.alert-block You can only add only image at a time. JPG format only.
+    .alert.alert-block You can only add one image at a time. JPG format only.
     .alert.alert-danger The first image uploaded will be the primary image for the pattern.
 
 .row
@@ -13,7 +13,7 @@
 
 .row
   .span12
-    - if @images
+    - if @images.length > 0
       h3 Current Images
       - @images.each do |img|
         .row

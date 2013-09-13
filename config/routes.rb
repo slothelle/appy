@@ -3,6 +3,7 @@ Loveknit::Application.routes.draw do
   resources :patterns do
     resources :abbreviations
     resources :images
+    resources :charts
     resources :sections do
       resources :rows
     end

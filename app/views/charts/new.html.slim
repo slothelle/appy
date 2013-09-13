@@ -1,0 +1,24 @@
+.row
+  .span12
+    h1 New Chart for #{@pattern.name}
+    .alert.alert-block You can only add one chart at a time. JPG format only.
+    .alert.alert-danger Charts are presented on the PDF in the order they are uploaded.
+
+.row
+  .span12
+  = form_for ([@pattern, @chart]), :chart => new_pattern_chart_path(@pattern), :html => { :multipart => true } do |form|
+    = form.file_field :image
+    p
+    = form.submit "Add Chart", { class: "btn btn-success" }
+
+.row
+  .span12
+    - if @charts.length > 0
+      h3 Current Charts
+      - @charts.each do |img|
+        .row
+          .span2
+          .span2
+            = link_to "Delete chart", pattern_chart_path(pattern_id: @pattern.id, id: img.id), method: :delete, class: "btn btn-danger btn-small"
+          .span8
+            p = image_tag img.image(:large), { class: "thumbnail" }
