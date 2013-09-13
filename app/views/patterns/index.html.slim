@@ -9,18 +9,22 @@ h2 <i class='icon-book'></i> Pattern Library
         a.btn.dropdown-toggle data-toggle="dropdown" href="#" Edit <span class="caret"></span>
         ul.dropdown-menu
           li = link_to "<i class='icon-pencil'></i> &nbsp; Edit pattern".html_safe, edit_pattern_path(pattern.id)
-          li = link_to "<i class='icon-camera'></i> &nbsp; Add image".html_safe, new_pattern_image_path(pattern)
-          li = link_to "<i class='icon-wrench'></i> &nbsp; Add abbreiations".html_safe, new_pattern_abbreviation_path(pattern.id)
+          li = link_to "<i class='icon-camera'></i> &nbsp; Add images".html_safe, new_pattern_image_path(pattern)
       span &nbsp;
       .btn-group
         a.btn.dropdown-toggle.btn-info data-toggle="dropdown" href="#" View <span class="caret"></span>
         ul.dropdown-menu
           li = link_to "<i class='icon-bold'></i> &nbsp; Plain text".html_safe, pattern_path(pattern.id)
-          li = link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf")
+          - if meets_requirements(pattern)
+            li = link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf")
     .span9
       h4 #{pattern.name}
       p.muted Created #{pretty_time(pattern.created_at)} &bull; Last updated #{pretty_time(pattern.updated_at)}
       small #{pattern.description}
+      - if pattern.abbreviations.length == 0
+        .alert.alert-danger <strong>This pattern has no abbreviations.</strong> #{link_to "<i class='icon-wrench'></i> Add abbreviations".html_safe, new_pattern_abbreviation_path(pattern.id), class: "btn btn-warning"}<br> You cannot download a PDF unless abbreviations are added.
+      - if pattern.images.length == 0
+        .alert.alert-danger <strong>This pattern has no images.</strong> #{link_to "<i class='icon-camera'></i> &nbsp; Add images".html_safe, new_pattern_image_path(pattern), class: "btn btn-warning"}<br>You cannot download a PDF unless images are added.
   hr
 
-h3 Don't see what you're looking for? #{link_to "Add a new pattern", new_pattern_path, { class: "btn btn-success" }}
+= link_to "Add a new pattern", new_pattern_path, { class: "btn btn-success btn-block btn-large" }

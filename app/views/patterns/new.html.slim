@@ -19,19 +19,6 @@
       = f.label :description, "<h4>Description</h4>".html_safe
       = f.text_area :description, class: "span12", value: "This quick and easy basketweave cowl can be knit in nearly any yarn weight, and is suitable for beginning knitters. This cowl reminds me of my days spent weaving and continuously reminds me of my forgotten hobby. Worked in the round, the reversible stitch is easy to memorize or adapt to other yarn weights. Instructions are also given for an infinity cowl, which can be worn looped around your neck multiple times."
 
-      / table.table
-      /   thead
-      /     tr
-      /       th.span1 Abbreviation
-      /       th.span11 Definition
-      /   tbody
-      /     - AbbreviationHelper::ABBREVIATIONS.each do |stitch, definition|
-      /       tr
-      /         td = f.text_field :stitch, value: stitch, class: "span12"
-      /         td = f.text_field :definition, value: definition, class: "span12"
-      / = f.fields_for :abbreviations
-      / = f.link_to_add "Add a new Abbreviation", :abbreviations, { class: "btn btn-info" }
-
       hr
       h3 Materials
       .control-group

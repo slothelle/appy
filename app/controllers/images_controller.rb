@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
   def new
     @image = Image.new
     @pattern = Pattern.find(params[:pattern_id])
+    @images = @pattern.images
   end
 
   def create
@@ -13,5 +14,12 @@ class ImagesController < ApplicationController
     else
       redirect_to new_pattern_image_path(params[:pattern_id])
     end
+  end
+
+  def destroy
+    Image.destroy(params[:id])
+  end
+
+  def show
   end
 end

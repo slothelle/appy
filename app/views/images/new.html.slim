@@ -1,10 +1,24 @@
 .row
   .span12
-    h1 New Image
+    h1 New Image for #{@pattern.name}
     .alert.alert-block You can only add only image at a time. JPG format only.
-    .alert.alert-info Adding image to <strong>#{@pattern.name}</strong>
+    .alert.alert-danger The first image uploaded will be the primary image for the pattern.
 
-= form_for ([@pattern, @image]), :image => new_pattern_image_path(@pattern), :html => { :multipart => true } do |form|
-  = form.file_field :photo
-  p
-  = form.submit "Add Image", { class: "btn btn-info" }
+.row
+  .span12
+  = form_for ([@pattern, @image]), :image => new_pattern_image_path(@pattern), :html => { :multipart => true } do |form|
+    = form.file_field :photo
+    p
+    = form.submit "Add Image", { class: "btn btn-success" }
+
+.row
+  .span12
+    - if @images
+      h3 Current Images
+      - @images.each do |img|
+        .row
+          .span2
+          .span2
+            = link_to "Delete image", pattern_image_path(pattern_id: @pattern.id, id: img.id), method: :delete, class: "btn btn-danger btn-small"
+          .span8
+            p = image_tag img.photo(:large), { class: "thumbnail" }
