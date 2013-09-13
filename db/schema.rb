@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130912145601) do
   create_table "abbreviations", :force => true do |t|
     t.string   "stitch"
     t.string   "definition"
+    t.integer  "pattern_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

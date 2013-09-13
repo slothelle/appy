@@ -1,7 +1,34 @@
 .row
   .span12
     h1 New Abbreviations
-    .alert.alert-block This is only for adding new abbreivations. If the pattern already has abbreviations, you're in the wrong place.
-    .alert.alert-info Adding abbreivations to <strong>#{@pattern.name}</strong>
+    .alert.alert-danger <strong>WARNING</strong> currently there is no way to edit abbreviations or add new abbreviations to a pattern without Liz going into the command line and doing it herself. Make sure you get it right the first time (please!)
+    .alert.alert-info These are standard abbreviations. Clear out any fields that you don't want to use for this pattern.
 
-- @abbreviations.each do |a|
+= form_for ([@pattern, @abbreviation]) do |f|
+  - n = 0
+  table.table
+    thead
+      tr
+        th.span1 Abbreviation
+        th.span11 Definition
+    tbody
+    - AbbreviationHelper::ABBREVIATIONS.each do |st, defi|
+      tr
+        td = text_field_tag "stitches[#{n}]", st, { class: "span12" }
+        td = text_field_tag "definitions[#{n}]", defi, { class: "span12" }
+        - n+=1
+
+  .alert.alert-danger Leave blank if you don't want to add that many abbreviations.
+  table.table
+    thead
+      tr
+        th.span1 Abbreviation
+        th.span11 Custom Definition
+    tbody
+    - 10.times do
+      tr
+        td = text_field_tag "stitches[#{n}]", "", { placeholder: "stitch", class: "span12" }
+        td = text_field_tag "definitions[#{n}]", "", { placeholder: "definition", class: "span12" }
+        - n+=1
+
+  = f.submit "Add Abbreviations to #{@pattern.name}", class: "btn btn-success btn-block btn-large"
