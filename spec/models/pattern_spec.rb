@@ -21,6 +21,5 @@ describe Pattern do
   it { should have_many(:charts) }
   it { should accept_nested_attributes_for(:rows) }
   it { should accept_nested_attributes_for(:sections) }
-  it { should accept_nested_attributes_for(:images) }
   it { should accept_nested_attributes_for(:abbreviations) }
 end
