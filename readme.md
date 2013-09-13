@@ -11,3 +11,5 @@ PDFs are generated using Prawn.
 - moar tests (always moar tests)
 - charts and legends (charts WIP, legends done)
 - validations on models (whoops...)
+- version number for PDF
+- release date for PDF (grab this from the updated stamp?)
