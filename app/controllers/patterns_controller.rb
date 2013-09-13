@@ -19,7 +19,7 @@ class PatternsController < ApplicationController
   def update
     @pattern = Pattern.find(params[:id])
     @pattern.update_attributes(params[:pattern])
-    redirect_to @pattern
+    redirect_to patterns_path
   end
 
   def show

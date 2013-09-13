@@ -1,73 +1,46 @@
-h1 Edit #{@pattern.name}
-
-p All fields are required. Syntax and grammar matter, a PDF will be generated from your input. You will have to clear the existing values to put in the information for this pattern. Please use the existing values as a guideline for formatting. You're just creating the pattern right now, you'll be adding the section information and row-by-row instructions on a subsequent page.
-
 .row
-  .span4
-  .span8
+  .span12
+    h1 Edit #{@pattern.name}
+    p.text-center = image_tag @pattern.images.first.photo(:large)
 
-h2 Pattern Information
-= nested_form_for @pattern do |f|
-  .row
-    .span4
-      = f.label :name, "Pattern Name"
-    .span8
-      = f.text_field :name
+  = nested_form_for @pattern do |f|
+    table.table
+      tbody
+        tr
+          td = f.label :name, "Pattern Name"
+          td = f.text_field :name, { class: "span12"}
+        tr
+          td = f.label :gauge, "Gauge"
+          td = f.text_field :gauge, { class: "span12"}
+        tr
+          td = f.label :needle, "Needle"
+          td = f.text_field :needle, { class: "span12"}
+        tr
+          td = f.label :yarn_info, "Yarn Shown"
+          td = f.text_field :yarn_info, { class: "span12"}
+        tr
+          td = f.label :yarn, "Yarn Requirements"
+          td = f.text_field :yarn, { class: "span12"}
+        tr
+          td = f.label :notions, "Notions"
+          td = f.text_field :notions, { class: "span12"}
+        tr
+          td = f.label :finished_sizes, "Finished Sizes"
+          td = f.text_area :finished_sizes, { class: "span12"}
+        tr
+          td = f.label :description, "Description"
+          td = f.text_area :description, { class: "span12"}
+    hr
+    h3 Abbreviations
+    = f.fields_for :abbreviations
+    = f.link_to_add "Add a new abbreviation", :abbreviations, { class: "btn btn-info" }
 
-  .row
-    .span4
-      = f.label :gauge, "Gauge"
-    .span8
-      = f.text_field :gauge
-
-  .row
-    .span4
-      = f.label :needle, "Needle"
-    .span8
-      = f.text_field :needle
-
-  .row
-    .span4
-      = f.label :yarn_info, "Yarn Shown"
-    .span8
-      = f.text_field :yarn_info
-
-  .row
-    .span4
-      = f.label :yarn, "Yarn Requirements"
-    .span8
-      = f.text_field :yarn
-
-  .row
-    .span4
-      = f.label :notions, "Notions"
-      br
-      span.small List in order used.
-    .span8
-      = f.text_field :notions
-
-  .row
-    .span4
-      = f.label :finished_sizes, "Finished Sizes"
-      br
-      span.small You may have to wing it here.
-    .span8
-      = f.text_area :finished_sizes
-
-  .row
-    .span4
-      = f.label :description, "Description"
-      br
-      span.small Keep it short, up to 3 sentences.
-    .span8
-      = f.text_area :description
-
-  .row
-    h2 Sections
+    hr
+    h3 Sections
+    h4.alert.alert-danger Hey! Sections and rows may not appear in order. Don't worry about that. Don't try to fix it. Just leave them in the order they've rendered on this page. If you try and re-order it, you are going to break literally everything.
+    p.muted This is why the numbering was so important when you were making the sections!
     = f.fields_for :sections
-    = f.link_to_add "Add a new section", :sections, { class: "button-attn" }
+    = f.link_to_add "Add a new section", :sections, { class: "btn btn-info" }
 
-  .row
-    .border
-    .center
-      = f.submit "Update Pattern"
+    p
+    = f.submit "Update Pattern", class: "btn btn-success btn-large btn-block"

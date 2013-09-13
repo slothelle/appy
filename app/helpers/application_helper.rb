@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def pretty_time(time)
-    time.strftime("%m/%d/%Y")
+    time.strftime("%m/%d/%Y at %l:%M %P (%Z)")
   end
 
   def meets_requirements(pattern)
