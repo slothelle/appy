@@ -8,13 +8,10 @@ describe User do
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email) }
   it { should validate_presence_of(:password) }
+  it { should validate_presence_of(:name) }
   it { should_not allow_value("blah").for(:email) }
   it { should allow_value("liz@liz.com").for(:email) }
+  it { should allow_value("liz").for(:name) }
+  it { should allow_value("liz").for(:password) }
 
-  context 'with valid input' do
-    it 'should create a user' do
-      person = FactoryGirl.create(:user)
-      expect(person).to be_instance_of(User)
-    end
-  end
 end

@@ -10,3 +10,4 @@ PDFs are generated using Prawn.
 - figure out sizing (tables? inline? multiple PDFs?)
 - moar tests (always moar tests)
 - charts and legends (charts WIP, legends done)
+- validations on models (whoops...)

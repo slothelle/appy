@@ -7,5 +7,4 @@ describe Row do
   it { should allow_mass_assignment_of(:side) }
   it { should allow_mass_assignment_of(:pattern) }
   it { should belong_to(:section) }
-  it { should belong_to(:pattern) }
 end
