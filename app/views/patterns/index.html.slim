@@ -16,7 +16,7 @@ h2 <i class='icon-book'></i> Pattern Library
           li = link_to "<i class='icon-camera'></i> &nbsp; Images".html_safe, new_pattern_image_path(pattern)
           li = link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Charts".html_safe, new_pattern_chart_path(pattern)
     .span9
-      h4 #{pattern.name}
+      h4 #{pattern.name} <small class="pull-right">Version #{pattern.version}</small>
       p.muted Created #{pretty_time(pattern.created_at)} &bull; Last updated #{pretty_time(pattern.updated_at)}
       small #{pattern.description}
       - if pattern.abbreviations.length == 0

@@ -118,7 +118,7 @@ pdf.repeat(2..10) do
     pdf.default_leading 1
     pdf.font_size 8
     pdf.fill_color "cbcbcb"
-    pdf.text "#{@pattern.name}. Version 1, January 2013. Design and pattern by Liz Abinante, www.feministy.com", :align => :center
+    pdf.text "#{@pattern.name}. Version #{@pattern.version}, #{version(@pattern.updated_at)}. Design and pattern by Liz Abinante, www.feministy.com", :align => :center
     pdf.move_down(5)
   end
 end

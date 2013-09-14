@@ -11,6 +11,7 @@ describe Pattern do
   it { should allow_mass_assignment_of(:description) }
   it { should allow_mass_assignment_of(:notions) }
   it { should allow_mass_assignment_of(:instructions) }
+  it { should allow_mass_assignment_of(:version) }
   it { should allow_mass_assignment_of(:sections_attributes) }
   it { should allow_mass_assignment_of(:rows_attributes) }
   it { should allow_mass_assignment_of(:abbreviations_attributes) }

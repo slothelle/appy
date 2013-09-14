@@ -19,6 +19,10 @@ module ApplicationHelper
     time.strftime("%m/%d/%Y at %l:%M %P (%Z)")
   end
 
+  def version(time)
+    time.strftime("%B %Y")
+  end
+
   def meets_requirements(pattern)
     return true if pattern.abbreviations.length > 0 && pattern.images.length > 0
   end
