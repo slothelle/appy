@@ -104,9 +104,9 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
   #
   pdf.font(normaly)
   pdf.fill_color "666666"
-  pdf.text make_legend(@pattern, 1, 20), :align => :center, :size => 9
-  pdf.text make_legend(@pattern, 20, 50), :align => :center, :size => 9
-  make_legend(@pattern, 50, 500).each { |l| pdf.text l, :align => :center, :size => 9 }
+  pdf.text render_legend(@pattern, 1, 20), :align => :center, :size => 9
+  pdf.text render_legend(@pattern, 20, 50), :align => :center, :size => 9
+  render_legend(@pattern, 50, 500).each { |l| pdf.text l, :align => :center, :size => 9 }
 
   #
   # => ACTUAL PATTERN INSTRUCTIONS

@@ -7,23 +7,25 @@ module PdfViewHelper
     section.rows.sort_by(&:id).map { |row| ["Row #{row.num}:", row.instructions] }
   end
 
-  def make_legend(pattern, min, max)
-    list = prettify_legend(pattern.abbreviations, min, max)
-    return list if min == 50
-    return format_short_legend(list) if max <= 50
+  def render_legend(pattern, min, max)
+    list = sort_legend_by_size(pattern.abbreviations, min, max)
+    abbrevs = format_legend(list)
+
+    return abbrevs if min == 50
+    return format_short_legend(abbrevs) if max <= 50
   end
 
-  def prettify_legend(abbreviations, min, max)
-    list = []
-    abbreviations.each do |a|
-      if a.definition.length > min && a.definition.length < max
-        list << "#{a.stitch}:   #{a.definition}"
-      end
+  def sort_legend_by_size(abbreviations, min, max)
+    abbreviations.select do |a|
+      a.definition.length > min && a.definition.length < max
     end
-    list
   end
 
-  def format_short_legend(list)
-    list.join("     ||     ")
+  def format_legend(abbreviations)
+    abbreviations.map { |a| "#{a.stitch}:   #{a.definition}" }
+  end
+
+  def format_short_legend(pretty_list)
+    pretty_list.join("     ||     ")
   end
 end
