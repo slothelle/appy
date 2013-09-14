@@ -6,10 +6,10 @@ class ChartLegendsController < ApplicationController
   end
 
   def create
-    legend = ChartLegend.new(params[:legend])
+    legend = ChartLegend.new(params[:chart_legend])
     legend.pattern = Pattern.find(params[:pattern_id])
-    if legend.save
-      flash[:notice] = "Legend #{legend.image_file_name} successfully added to #{chart.pattern.name}"
+    if legend.save!
+      flash[:notice] = "Legend #{legend.image_file_name} successfully added to #{legend.pattern.name}"
       redirect_to patterns_path
     else
       redirect_to new_pattern_chart_legend_path(params[:pattern_id])

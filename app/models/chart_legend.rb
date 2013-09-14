@@ -5,5 +5,5 @@ class ChartLegend < ActiveRecord::Base
 
   has_attached_file :image, :styles => { :large => "540x540", :medium => "260x260", :small => "130x130" }
 
-  validates_presence_of :image, :patern
+  validates_presence_of :image, :pattern
 end
