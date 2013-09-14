@@ -1,4 +1,8 @@
 class PatternsController < ApplicationController
+  include AbbreviationHelper
+  include PdfViewHelper
+  include PatternViewHelper
+
   def new
     @pattern = Pattern.new
   end

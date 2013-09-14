@@ -1,4 +1,6 @@
 class AbbreviationsController < ApplicationController
+  include AbbreviationHelper
+
   def new
     @pattern = Pattern.find(params[:pattern_id])
     @abbreviation = Abbreviation.new
