@@ -11,6 +11,4 @@ PDFs are generated using Prawn. Built with Twitter Bootstrap because lazy.
 - moar tests (always moar tests)
 - charts and legends (charts WIP, legends done)
 - validations on models (whoops...)
-- version number for PDF (migration required)
-- release date for PDF (grab this from the updated stamp?)
 - math functions for sizing patterns?
