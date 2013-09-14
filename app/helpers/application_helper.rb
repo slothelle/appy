@@ -24,6 +24,6 @@ module ApplicationHelper
   end
 
   def meets_requirements(pattern)
-    return true if pattern.abbreviations.length > 0 && pattern.images.length > 0
+    pattern.images? && pattern.abbrevs? && pattern.charts_with_legends?
   end
 end
