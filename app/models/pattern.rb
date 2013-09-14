@@ -22,9 +22,11 @@ class Pattern < ActiveRecord::Base
     return true if abbreviations.length > 0
   end
 
-  def charts_with_legends?
-    if charts.length > 0 && chart_legends.length > 0
-      true
-    end
+  def charts?
+    return true if charts.length > 0
+  end
+
+  def chart_legends?
+    return true if chart_legends.length > 0
   end
 end
