@@ -8,15 +8,12 @@ module PdfViewHelper
   end
 
   def make_legend(pattern, min, max)
-    list = sort_legend(pattern.abbreviations, min, max)
-    if min == 50
-      return list
-    else
-      format_short_legend(list)
-    end
+    list = prettify_legend(pattern.abbreviations, min, max)
+    return list if min == 50
+    return format_short_legend(list) if max <= 50
   end
 
-  def sort_legend(abbreviations, min, max)
+  def prettify_legend(abbreviations, min, max)
     list = []
     abbreviations.each do |a|
       if a.definition.length > min && a.definition.length < max
