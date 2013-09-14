@@ -29,7 +29,7 @@ h2 <i class='icon-book'></i> Pattern Library
         small.muted
           p.text-right Charts are not required, but this pattern has no charts. <br>#{link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Add chart".html_safe, new_pattern_chart_path(pattern), class: "btn btn-mini"}
       - if (pattern.charts.length > 0 && pattern.chart_legends.length == 0)
-        .alert.alert-danger <strong>This pattern has no chart legends.</strong> #{link_to "<i class='icon-key'></i> &nbsp; Add chart legends".html_safe, new_pattern_chart_legend_path(pattern), class: "btn btn-warning"}<br>You cannot download a PDF unless at least one chart legend is added.
+        .alert.alert-danger <strong>This pattern has a chart but no chart legends.</strong> #{link_to "<i class='icon-key'></i> &nbsp; Add chart legends".html_safe, new_pattern_chart_legend_path(pattern), class: "btn btn-warning"}<br>You cannot download a PDF unless at least one chart legend is added.
   hr
 
 = link_to "Add a new pattern", new_pattern_path, { class: "btn btn-success btn-block btn-large" }
