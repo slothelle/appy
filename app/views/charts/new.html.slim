@@ -3,6 +3,8 @@
     h1 New Chart for #{@pattern.name}
     .alert.alert-block You can only add one chart at a time. JPG format only.
     .alert.alert-danger Charts are presented on the PDF in the order they are uploaded.
+    - if (@pattern.charts? && !@pattern.chart_legends?)
+      = render partial: "shared/missing_legend", locals: { pattern: @pattern }
 
 .row
   .span12

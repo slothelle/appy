@@ -4,32 +4,31 @@ h2 <i class='icon-book'></i> Pattern Library
   .row
     .span1
     .span2
-      - if meets_requirements(pattern)
+      - if pattern_meets_pdf_requirements?(pattern)
         br
         #{link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf"), { class: "btn btn-info" }}
       p
       = link_to "<i class='icon-pencil'></i> &nbsp; Edit pattern".html_safe, edit_pattern_path(pattern.id), { class: "btn btn-warning"}
       p
       .btn-group
-        a.btn.dropdown-toggle data-toggle="dropdown" href="#" <i class='icon-plus'></i> &nbsp; Add... <span class="caret"></span>
+        a.btn.dropdown-toggle data-toggle="dropdown" href="#" <i class='icon-pencil'></i> &nbsp; Edit... <span class="caret"></span>
         ul.dropdown-menu
           li = link_to "<i class='icon-camera'></i> &nbsp; Images".html_safe, new_pattern_image_path(pattern)
           li = link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Charts".html_safe, new_pattern_chart_path(pattern)
-          - if pattern.charts.length > 0
+          - if pattern.charts?
             li = link_to "<i class='icon-key'></i> &nbsp; Chart Legends".html_safe, new_pattern_chart_legend_path(pattern)
     .span9
       h4 #{pattern.name} <small class="pull-right">Version #{pattern.version}</small>
       p.muted Created #{pretty_time(pattern.created_at)} &bull; Last updated #{pretty_time(pattern.updated_at)}
       small #{pattern.description}
-      - if pattern.abbreviations.length == 0
-        .alert.alert-danger <strong>This pattern has no abbreviations.</strong> #{link_to "<i class='icon-wrench'></i> Add abbreviations".html_safe, new_pattern_abbreviation_path(pattern.id), class: "btn btn-warning"}<br> You cannot download a PDF unless abbreviations are added.
-      - if pattern.images.length == 0
-        .alert.alert-danger <strong>This pattern has no images.</strong> #{link_to "<i class='icon-camera'></i> &nbsp; Add images".html_safe, new_pattern_image_path(pattern), class: "btn btn-warning"}<br>You cannot download a PDF unless images are added.
-      - if pattern.charts.length == 0
-        small.muted
-          p.text-right Charts are not required, but this pattern has no charts. <br>#{link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Add chart".html_safe, new_pattern_chart_path(pattern), class: "btn btn-mini"}
-      - if (pattern.charts.length > 0 && pattern.chart_legends.length == 0)
-        .alert.alert-danger <strong>This pattern has a chart but no chart legends.</strong> #{link_to "<i class='icon-key'></i> &nbsp; Add chart legends".html_safe, new_pattern_chart_legend_path(pattern), class: "btn btn-warning"}<br>You cannot download a PDF unless at least one chart legend is added.
+      - if !pattern.abbrevs?
+        = render partial: "shared/missing_abbrevs", locals: { pattern: pattern }
+      - if !pattern.images?
+        = render partial: "shared/missing_images", locals: { pattern: pattern }
+      - if !pattern.charts?
+        = render partial: "shared/missing_charts", locals: { pattern: pattern }
+      - if (pattern.charts? && !pattern.chart_legends?)
+        = render partial: "shared/missing_legend", locals: { pattern: pattern }
   hr
 
 = link_to "Add a new pattern", new_pattern_path, { class: "btn btn-success btn-block btn-large" }
