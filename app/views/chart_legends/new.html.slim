@@ -1,0 +1,26 @@
+.row
+  .span12
+    h1 New Legend for #{@pattern.name}
+    .alert.alert-block You can only add one legend at a time. JPG format only.
+    .alert.alert-danger Legends are presented on the PDF in the order they are uploaded.
+    - if !@pattern.charts?
+      = render partial: "shared/missing_chart", locals: { pattern: @pattern }
+
+.row
+  .span12
+  = form_for ([@pattern, @legend]), :legend => new_pattern_chart_legend_path(@pattern), :html => { :multipart => true } do |form|
+    = form.file_field :image
+    p
+    = form.submit "Add Legend", { class: "btn btn-success" }
+
+.row
+  .span12
+    - if @legends.length > 0
+      h3 Current Legends
+      - @legends.each do |img|
+        .row
+          .span2
+          .span2
+            = link_to "Delete legend", pattern_chart_legend_path(pattern_id: @pattern.id, id: img.id), method: :delete, class: "btn btn-danger btn-small"
+          .span8
+            p = image_tag img.image(:large), { class: "thumbnail" }
