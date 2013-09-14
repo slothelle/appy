@@ -29,4 +29,8 @@ class Pattern < ActiveRecord::Base
   def chart_legends?
     return true if chart_legends.length > 0
   end
+
+  def free?
+    return true unless free == nil
+  end
 end

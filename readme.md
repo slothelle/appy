@@ -13,5 +13,7 @@ PDFs are generated using Prawn. Built with Twitter Bootstrap because lazy.
 - add charts, legends to PDF
 - validations on models (whoops...)
 - math functions for sizing patterns?
+- add form field for "free" to patterns
+- figure out how to work flat v. round because some patterns have both
 - API for pattern data
 - would be super awesome if i could pull ravelry sales info here...

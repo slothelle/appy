@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914135312) do
+ActiveRecord::Schema.define(:version => 20130914150933) do
 
   create_table "abbreviations", :force => true do |t|
     t.string   "stitch"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130914135312) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "version"
+    t.string   "free"
   end
 
   create_table "rows", :force => true do |t|
