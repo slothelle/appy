@@ -5,6 +5,7 @@ Loveknit::Application.routes.draw do
     resources :images
     resources :charts
     resources :chart_legends
+    resources :comments
     resources :sections do
       resources :rows
     end

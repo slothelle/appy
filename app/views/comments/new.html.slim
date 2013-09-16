@@ -1,0 +1,24 @@
+.row
+  .span12
+    h1 Test Knitting
+    = link_to "<i class='icon-file'></i> &nbsp; Download PDF".html_safe, pattern_path(@pattern, :format => "pdf"), { class: "btn btn-info pull-right" }
+    h3 Comments for #{@pattern.name}
+    p Instructions:
+    ol
+      li Review all comments before adding a new one to avoid reporting duplicate issues
+      li Number all comments, errors, and issues for ease of reviewing
+      li If reporting an error, please list use the format below ("Error - Section Name - Row number")
+      li If an error spans multiple sections, please do something like "Error throughout"
+
+.row
+  .span7
+    h4 Comments
+    - if @pattern.comments?
+      p taco
+    - else
+      p.alert.alert-danger No comments yet! Maybe you should add one?
+  .span5
+    h4 Add a Comment
+    = nested_form_for(@pattern, html: { multipart: true, class: "new_model form-horizontal" }) do |f|
+      = f.fields_for :comments
+      = f.link_to_add "Add a new comment", :comments, { class: "btn btn-success btn-large btn-block" }
