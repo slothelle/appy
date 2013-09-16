@@ -1,7 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :pattern, :user, :body, :confidence
+  attr_accessible :pattern, :user, :body, :confidence, :pattern_id, :user_id
 
   belongs_to :pattern
-
-  validates_presence_of :pattern, :user, :body
 end

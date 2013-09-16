@@ -5,20 +5,20 @@
     h3 Comments for #{@pattern.name}
     p Instructions:
     ol
-      li Review all comments before adding a new one to avoid reporting duplicate issues
+      li #{link_to "Review all comments", pattern_comments_path(@pattern)} before adding a new one to avoid reporting duplicate issues
       li Number all comments, errors, and issues for ease of reviewing
       li If reporting an error, please list use the format below ("Error - Section Name - Row number")
       li If an error spans multiple sections, please do something like "Error throughout"
 
 .row
-  .span7
-    h4 Comments
-    - if @pattern.comments?
-      p taco
-    - else
-      p.alert.alert-danger No comments yet! Maybe you should add one?
-  .span5
+  .span12
     h4 Add a Comment
-    = nested_form_for(@pattern, html: { multipart: true, class: "new_model form-horizontal" }) do |f|
-      = f.fields_for :comments
-      = f.link_to_add "Add a new comment", :comments, { class: "btn btn-success btn-large btn-block" }
+    = form_for(@comment, url: new_pattern_comment_path(@pattern)) do |f|
+      = f.text_area :body, value: "1. Error - Set Up - Row 1: There is a problem with...", class: "span12"
+      p
+      = f.label :confidence, "<h4>How confident are you that this pattern is ready for release?</h4>".html_safe
+      p.muted "Technical errors" are errors specific to the instructions that would lead to errors in knitting. This does not include style preferences for wording, PDF formatting issues, or typos.
+      p
+      = f.select :confidence, [["1 - I'd be livid if I bought this", "1"], ["2 - Almost unworkable", "2"], ["3 - I barely got through it", "3"], ["4 - I had to guess a lot", "4"], ["5 - Many technical errors", "5"], ["6 - Moderate technical errors", "6"], ["7 - A few technical errors", "7"], ["8 - No technical errors, but still issues", "8"], ["9 - Very minor non-technical problems", "9"], ["10 - Flawless and awesome", "10"]]
+      p
+      = f.submit "Add comment", { class: "btn btn-success btn-large btn-block" }
