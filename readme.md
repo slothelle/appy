@@ -13,7 +13,7 @@ The current version of this project only creates PDFs. Future versions will be m
 - validations on models (whoops...)
 - math functions for sizing patterns?
 - figure out how to work flat v. round because some patterns have both
-
+- stitch counts for each row in form view and on PDF
 
 #### workbench todo
 
@@ -25,4 +25,4 @@ The current version of this project only creates PDFs. Future versions will be m
 #### wishlist
 
 - API for pattern data
-- would be super awesome if i could pull ravelry sales info here...
+- would be super awesome if I could pull Ravelry sales info here?

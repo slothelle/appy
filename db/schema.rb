@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130916152249) do
+ActiveRecord::Schema.define(:version => 20130916160840) do
 
   create_table "abbreviations", :force => true do |t|
     t.string   "stitch"
@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(:version => 20130916152249) do
   create_table "patterns", :force => true do |t|
     t.string   "name"
     t.string   "gauge"
-    t.string   "yarn"
-    t.string   "yarn_info"
-    t.string   "needle"
-    t.string   "notions"
+    t.text     "yarn"
+    t.text     "yarn_info"
+    t.text     "needle"
+    t.text     "notions"
     t.text     "description"
-    t.string   "finished_sizes"
+    t.text     "finished_sizes"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "version"
@@ -57,20 +57,20 @@ ActiveRecord::Schema.define(:version => 20130916152249) do
 
   create_table "rows", :force => true do |t|
     t.string   "num"
-    t.string   "instructions"
-    t.string   "side"
+    t.text     "instructions"
     t.integer  "pattern_id"
     t.integer  "section_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "stitch_count"
   end
 
   create_table "sections", :force => true do |t|
     t.integer  "pattern_id"
     t.string   "number"
     t.string   "title"
-    t.string   "description"
-    t.string   "instructions"
+    t.text     "description"
+    t.text     "instructions"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
