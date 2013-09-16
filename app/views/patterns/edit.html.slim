@@ -22,6 +22,9 @@
           td = f.label :version, "Version Number"
           td = f.text_field :version, { class: "span12"}
         tr
+          td = f.label :free, "Free?"
+          td = f.check_box :free, class: "span12"
+        tr
           td = f.label :gauge, "Gauge"
           td = f.text_field :gauge, { class: "span12"}
         tr
@@ -50,7 +53,7 @@
     hr
     h3 Sections
     h4.alert.alert-danger Hey! Sections and rows may not appear in order. Don't worry about that. Don't try to fix it. Just leave them in the order they've rendered on this page. If you try and re-order it, you are going to break literally everything.
-    p.muted This is why the numbering was so important when you were making the sections!
+    p.muted This is why the numbering was so important when you were making the sections and the rows!
     = f.fields_for :sections
     = f.link_to_add "Add a new section", :sections, { class: "btn btn-info" }
 

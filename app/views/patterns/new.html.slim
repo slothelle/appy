@@ -21,6 +21,11 @@
         .controls
           = f.text_field :version, value: "1", class: "span12"
 
+      .control-group
+        = f.label :free, "Free?", { class: "control-label" }
+        .controls
+          = f.check_box :free, value: "yes", class: "span12"
+
       = f.label :description, "<h4>Description</h4>".html_safe
       = f.text_area :description, class: "span12", value: "This quick and easy basketweave cowl can be knit in nearly any yarn weight, and is suitable for beginning knitters. This cowl reminds me of my days spent weaving and continuously reminds me of my forgotten hobby. Worked in the round, the reversible stitch is easy to memorize or adapt to other yarn weights. Instructions are also given for an infinity cowl, which can be worn looped around your neck multiple times."
 
