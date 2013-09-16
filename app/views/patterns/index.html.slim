@@ -8,11 +8,10 @@ h2 <i class='icon-book'></i> Pattern Library
         br
         #{link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf"), { class: "btn btn-info" }}
       p
-      = link_to "<i class='icon-pencil'></i> &nbsp; Edit pattern".html_safe, edit_pattern_path(pattern.id), { class: "btn btn-warning"}
-      p
       .btn-group
         a.btn.dropdown-toggle data-toggle="dropdown" href="#" <i class='icon-pencil'></i> &nbsp; Edit... <span class="caret"></span>
         ul.dropdown-menu
+          li = link_to "<i class='icon-pencil'></i> &nbsp; Pattern".html_safe, edit_pattern_path(pattern.id)
           li = link_to "<i class='icon-camera'></i> &nbsp; Images".html_safe, new_pattern_image_path(pattern)
           li = link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Charts".html_safe, new_pattern_chart_path(pattern)
           - if pattern.charts?
