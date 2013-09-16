@@ -9,8 +9,6 @@ PDFs are generated using Prawn. Built with Twitter Bootstrap because lazy.
 - format pdf (this is always a todo)
 - figure out sizing (tables? inline? multiple PDFs?)
 - moar tests (always moar tests)
-- legend upload
-- add charts, legends to PDF
 - validations on models (whoops...)
 - math functions for sizing patterns?
 - figure out how to work flat v. round because some patterns have both

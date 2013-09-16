@@ -159,6 +159,36 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
   pdf.font(normaly)
 
   #
+  # => PATTERN CHARTS
+  #
+  if @pattern.charts.count > 0
+    pdf.start_new_page
+    pdf.font(boldy)
+    pdf.fill_color "333333"
+    pdf.text "Charted Instructions", :align => :center, :size => 18
+    @pattern.charts.each do |img|
+      pdf.text img.name, :align => :center, :size => 12
+      pdf.image open("#{img.image.path(:large)}"), :position => :center
+      pdf.move_down 10
+    end
+    pdf.font(normaly)
+  end
+
+  #
+  # => LEGENDS FOR CHARTS
+  #
+  if @pattern.chart_legends.count > 0
+    pdf.font(boldy)
+    pdf.move_down 10
+    pdf.fill_color "333333"
+    pdf.text "Legend", :align => :center, :size => 14
+    @pattern.chart_legends.each do |img|
+      pdf.image open("#{img.image.path(:medium)}"), :position => :center
+    end
+    pdf.font(normaly)
+  end
+
+  #
   # => ADDITIONAL PATTERN IMAGES
   # => STARTS NEW PAGE
   #

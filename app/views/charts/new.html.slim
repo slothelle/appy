@@ -9,9 +9,13 @@
 .row
   .span12
   = form_for ([@pattern, @chart]), :chart => new_pattern_chart_path(@pattern), :html => { :multipart => true } do |form|
+    = form.label :name, "<h4>Chart Name</h4>".html_safe
+    = form.text_field :name, value: "Chart A", class: "span12"
+    p
+    = form.label :image, "<h4>Image</h4>".html_safe
     = form.file_field :image
     p
-    = form.submit "Add Chart", { class: "btn btn-success" }
+    = form.submit "Add Chart", { class: "btn btn-success btn-large btn-block" }
 
 .row
   .span12
@@ -21,6 +25,7 @@
         .row
           .span2
           .span2
+            h4 #{img.name}
             = link_to "Delete chart", pattern_chart_path(pattern_id: @pattern.id, id: img.id), method: :delete, class: "btn btn-danger btn-small"
           .span8
             p = image_tag img.image(:large), { class: "thumbnail" }

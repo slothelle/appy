@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914150933) do
+ActiveRecord::Schema.define(:version => 20130916152249) do
 
   create_table "abbreviations", :force => true do |t|
     t.string   "stitch"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130914150933) do
     t.integer "pattern_id"
     t.string  "image"
     t.string  "image_file_name"
+    t.string  "name"
   end
 
   create_table "images", :force => true do |t|
