@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130916160840) do
+ActiveRecord::Schema.define(:version => 20130916183454) do
 
   create_table "abbreviations", :force => true do |t|
     t.string   "stitch"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(:version => 20130916160840) do
     t.string  "name"
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "pattern_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.string   "confidence"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "images", :force => true do |t|
     t.string  "photo"
     t.integer "pattern_id"
@@ -53,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130916160840) do
     t.datetime "updated_at",     :null => false
     t.string   "version"
     t.string   "free"
+    t.string   "state"
   end
 
   create_table "rows", :force => true do |t|
@@ -81,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20130916160840) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "role"
   end
 
 end

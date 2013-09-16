@@ -7,6 +7,7 @@ class Pattern < ActiveRecord::Base
   has_many :abbreviations
   has_many :charts
   has_many :chart_legends
+  has_many :comments
 
   accepts_nested_attributes_for :sections
   accepts_nested_attributes_for :rows
