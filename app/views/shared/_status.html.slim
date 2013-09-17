@@ -1,0 +1,8 @@
+- if pattern.testing?
+  span.label.label-warning.pull-right Testing
+- elsif pattern.draft?
+  span.label.label-info.pull-right Draft
+- elsif pattern.editing?
+  span.label.label-danger.pull-right Tech Editing
+- else
+  span.label.label-success.pull-right Published

@@ -7,13 +7,17 @@ gem 'pg'
 gem 'meta_request'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
+gem 'therubyracer'
 gem 'slim-rails'
+gem "twitter-bootstrap-rails"
+
 gem 'nested_form'
+
+gem 'cancan'
+
 gem "paperclip", "~> 3.0"
 gem 'prawn'
-gem 'therubyracer'
 gem 'prawn-rails'
-gem "twitter-bootstrap-rails"
 
 group :assets do
   gem 'sass-rails'

@@ -1,0 +1,18 @@
+- if current_user.admin?
+  .row
+    .span12
+      h1 Update Comment
+      = render partial: "shared/status", locals: { pattern: @pattern }
+      h3 From #{@comment.user.name} on #{@pattern.name}
+      p Confidence score: #{@comment.confidence}
+      = form_for([@pattern, @comment]) do |f|
+        p.alert.alert-block
+          |
+            Mark this comment as resolved? #{f.check_box :resolved, value: "#{@comment.resolved}"}
+            <br>#{f.submit "Update", { class: "btn btn-success btn-small" }}
+      p #{@comment.body}
+      small.muted Posted on: #{short_pretty_time(@comment.created_at)}
+- else
+  .row
+    .span12
+      = render partial: "shared/permissions_error", locals: { pattern: @pattern }
