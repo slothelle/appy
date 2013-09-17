@@ -1,5 +1,5 @@
 class Row < ActiveRecord::Base
-  attr_accessible :num, :instructions, :side, :pattern
+  attr_accessible :num, :instructions, :side, :pattern, :stitch_count
 
   belongs_to :section
 

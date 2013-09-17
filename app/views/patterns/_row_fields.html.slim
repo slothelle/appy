@@ -2,10 +2,12 @@ table.table
   thead
     tr
       th.span1 Number
-      th.span9 Instructions
+      th.span8 Instructions
+      th.span1 # Sts
       th.span2
   tbody
     tr
       td = f.text_field :num, class: "span12"
       td = f.text_field :instructions, class: "span12"
+      td = f.text_field :stitch_count, class: "span12"
       td = f.link_to_remove "Remove row", { class: "btn btn-danger btn-mini" }
