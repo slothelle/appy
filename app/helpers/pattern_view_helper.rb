@@ -1,4 +1,6 @@
 module PatternViewHelper
+  STATES = ["published", "testing", "editing", "draft", "errors"]
+
   def pretty_time(time)
     time.strftime("%m/%d/%Y at %l:%M %P (%Z)")
   end
