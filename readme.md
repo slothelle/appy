@@ -23,6 +23,7 @@ The current version of this project only creates PDFs. Future versions will be m
 - users with different permissions
 - pattern drafting/note taking (???)
 - *comments feature* admin users should be able to mark comments as resolved
+- *comments feature* admin users should be able to reply to comments (???)
 
 #### wishlist
 

@@ -16,6 +16,8 @@
 .row
   .span12
     h3 Comments
+    - if current_user.admin?
+      p.muted Click on the wrench icon in the "Resolved?" column to make changes to the comment's status.
     table.table.table-bordered
       thead
         tr
@@ -28,15 +30,15 @@
         - @comments.each do |comment|
           - if comment.resolved? == "Yes"
             tr
-              td = comment.user.name
-              td = comment.body
-              td = comment.confidence
-              td = short_pretty_time(comment.created_at)
-              td = comment.resolved?
+              = render partial: "shared/comment_table", locals: { comment: comment }
+              - if current_user.admin?
+                = render partial: "shared/comment_resolve", locals: { comment: comment }
+              - else
+                td = comment.resolved?
           - else
             tr.error
-              td = comment.user.name
-              td = comment.body
-              td = comment.confidence
-              td = short_pretty_time(comment.created_at)
-              td = comment.resolved?
+              = render partial: "shared/comment_table", locals: { comment: comment }
+              - if current_user.admin?
+                = render partial: "shared/comment_resolve", locals: { comment: comment }
+              - else
+                td = comment.resolved?

@@ -11,4 +11,16 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :role
 
   ROLES = %w[admin editor tester]
+
+  def admin?
+    return true if role == "admin"
+  end
+
+  def editor?
+    return true if role == "editor"
+  end
+
+  def tester?
+    return true if role == "tester"
+  end
 end

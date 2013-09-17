@@ -21,4 +21,16 @@ class CommentsController < ApplicationController
       redirect_to new_pattern_comment_path(@pattern)
     end
   end
+
+  def edit
+    @pattern = Pattern.find(params[:pattern_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update_attributes(params[:comment])
+    @pattern = @comment.pattern
+    redirect_to pattern_comments_path(@pattern)
+  end
 end
