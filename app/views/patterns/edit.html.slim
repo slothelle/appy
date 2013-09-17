@@ -25,6 +25,9 @@
           td = f.label :free, "Free?"
           td = f.check_box :free, class: "span12"
         tr
+          td = f.label :state, "State"
+          td = f.select :state, PatternViewHelper::STATES
+        tr
           td = f.label :gauge, "Gauge"
           td = f.text_field :gauge, { class: "span12"}
         tr
