@@ -1,0 +1,42 @@
+.row
+  .span12
+    h1 Test Knitting
+    = link_to "<i class='icon-file'></i> &nbsp; Download PDF".html_safe, pattern_path(@pattern, :format => "pdf"), { class: "btn btn-info pull-right" }
+    h3 Comments for #{@pattern.name}
+    p Instructions:
+    ol
+      li Review all comments before adding a new one to avoid reporting duplicate issues
+      li Number all comments, errors, and issues for ease of reviewing
+      li If reporting an error, please specify the section and row
+      li If an error spans multiple sections, please do something like "Error throughout"
+      li Comments are reviewing by Liz, tech editors, and Erin - only they can mark the issue as resolved
+    = link_to "Add a new comment", new_pattern_comment_path(@pattern), { class: "btn btn-success btn-large btn-block fancy-form" }
+    .new-comment
+
+.row
+  .span12
+    h3 Comments
+    table.table.table-bordered
+      thead
+        tr
+          th.span2 From
+          th.span6 Comment
+          th.span1 Confidence
+          th.span2 Date
+          th.span1 Resolved?
+      tbody
+        - @comments.each do |comment|
+          - if comment.resolved? == "Yes"
+            tr
+              td = comment.user.name
+              td = comment.body
+              td = comment.confidence
+              td = short_pretty_time(comment.created_at)
+              td = comment.resolved?
+          - else
+            tr.error
+              td = comment.user.name
+              td = comment.body
+              td = comment.confidence
+              td = short_pretty_time(comment.created_at)
+              td = comment.resolved?

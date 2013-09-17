@@ -9,7 +9,7 @@ h2 <i class='icon-book'></i> Pattern Library
         #{link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf"), { class: "btn btn-info" }}
       p
       - if pattern.testing?
-        #{link_to "<i class='icon-thumbs-up'></i> &nbsp; Review".html_safe, new_pattern_comment_path(pattern), { class: "btn btn-warning" }}
+        #{link_to "<i class='icon-thumbs-up'></i> &nbsp; Review".html_safe, pattern_comments_path(pattern), { class: "btn btn-warning" }}
 
       p
       - if pattern.editing?
