@@ -8,6 +8,14 @@ h2 <i class='icon-book'></i> Pattern Library
         br
         #{link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf"), { class: "btn btn-info" }}
       p
+      - if pattern.testing?
+        #{link_to "<i class='icon-thumbs-up'></i> &nbsp; Review".html_safe, pattern_comments_path(pattern), { class: "btn btn-warning" }}
+
+      p
+      - if pattern.editing?
+        #{link_to "<i class='icon-strikethrough'></i> &nbsp; Tech Edit".html_safe, new_pattern_comment_path(pattern), { class: "btn btn-danger" }}
+
+      p
       .btn-group
         a.btn.dropdown-toggle data-toggle="dropdown" href="#" <i class='icon-pencil'></i> &nbsp; Edit... <span class="caret"></span>
         ul.dropdown-menu
@@ -16,10 +24,16 @@ h2 <i class='icon-book'></i> Pattern Library
           li = link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Charts".html_safe, new_pattern_chart_path(pattern)
           - if pattern.charts?
             li = link_to "<i class='icon-key'></i> &nbsp; Chart Legends".html_safe, new_pattern_chart_legend_path(pattern)
+
     .span9
       h4 #{pattern.name} <small class="pull-right">Version #{pattern.version}</small>
+
+      = render partial: "shared/status", locals: { pattern: pattern }
+
       p.muted Created #{pretty_time(pattern.created_at)} &bull; Last updated #{pretty_time(pattern.updated_at)}
+
       small #{pattern.description}
+
       - if !pattern.abbrevs?
         = render partial: "shared/missing_abbrevs", locals: { pattern: pattern }
       - if !pattern.images?

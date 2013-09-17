@@ -17,12 +17,8 @@ The current version of this project only creates PDFs. Future versions will be m
 
 #### workbench todo
 
+- pattern state needs to be added to new/edit forms
 - tech editing PDF annotation
-- test knitting comments/discussion thread
-- users with different permissions
-- pattern drafting/note taking
-
-#### wishlist
-
-- API for pattern data
-- would be super awesome if I could pull Ravelry sales info here?
+- pattern drafting/note taking (???)
+- *comments feature* admin users should be able to reply to comments (???)
+- make sure that user permissions are consistent across app
