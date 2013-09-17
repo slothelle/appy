@@ -22,8 +22,3 @@ The current version of this project only creates PDFs. Future versions will be m
 - pattern drafting/note taking (???)
 - *comments feature* admin users should be able to reply to comments (???)
 - make sure that user permissions are consistent across app
-
-#### wishlist
-
-- API for pattern data
-- would be super awesome if I could pull Ravelry sales info here?
