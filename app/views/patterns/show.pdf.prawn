@@ -148,7 +148,7 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
     # => PATTERN ROWS IN A TABLE
     #
     pdf.table rows, :cell_style => {:padding => 3, :border_width => 0 },
-            :column_widths => [100, 440]
+            :column_widths => [75, 410, 50]
     pdf.move_down 17
     pdf.font(italicy)
     pdf.fill_color "888888"

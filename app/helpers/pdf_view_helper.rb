@@ -4,7 +4,13 @@ module PdfViewHelper
   end
 
   def format_rows_for(section)
-    section.rows.sort_by(&:id).map { |row| ["Row #{row.num}:", row.instructions] }
+    section.rows.sort_by(&:id).map do |row|
+      if row.stitch_count != "" && row.stitch_count != nil
+        ["Row #{row.num}:", row.instructions, "(#{row.stitch_count} sts)"]
+      else
+        ["Row #{row.num}:", row.instructions, ""]
+      end
+    end
   end
 
   def render_legend(pattern, min, max)

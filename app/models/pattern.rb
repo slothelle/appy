@@ -1,5 +1,5 @@
 class Pattern < ActiveRecord::Base
-  attr_accessible :name, :gauge, :yarn, :yarn_info, :needle, :notions, :description, :finished_sizes, :instructions, :sections_attributes, :rows_attributes, :abbreviations_attributes, :version, :chart_legends_attributes, :state
+  attr_accessible :name, :gauge, :yarn, :yarn_info, :needle, :notions, :description, :finished_sizes, :instructions, :sections_attributes, :rows_attributes, :abbreviations_attributes, :version, :chart_legends_attributes, :state, :free
 
   has_many :sections
   has_many :rows, :through => :sections
