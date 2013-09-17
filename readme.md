@@ -13,7 +13,6 @@ The current version of this project only creates PDFs. Future versions will be m
 - validations on models (whoops...)
 - math functions for sizing patterns?
 - figure out how to work flat v. round because some patterns have both
-- stitch counts for each row in form view and on PDF
 
 #### workbench todo
 
