@@ -17,11 +17,12 @@ The current version of this project only creates PDFs. Future versions will be m
 
 #### workbench todo
 
+- pattern state needs to be added to new/edit forms
 - tech editing PDF annotation
 - test knitting comments/discussion thread
 - users with different permissions
-- pattern drafting/note taking
-- pattern state needs to be added to new/edit forms
+- pattern drafting/note taking (???)
+- *comments feature* admin users should be able to mark comments as resolved
 
 #### wishlist
 
