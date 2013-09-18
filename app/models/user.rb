@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   end
 
   def editor?
-    return true if role == "editor"
+    return true if role == "editor" || role == "admin"
   end
 
   def tester?
-    return true if role == "tester"
+    return true if role == "tester" || role == "admin"
   end
 end
