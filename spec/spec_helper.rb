@@ -13,7 +13,9 @@ RSpec.configure do |config|
     Capybara.ignore_hidden_elements = false
 
     config.include UserHelper, :type => :request
+    config.include UserHelper, :type => :model
     config.include SeederHelper, :type => :request
+    config.include SeederHelper, :type => :model
 
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
