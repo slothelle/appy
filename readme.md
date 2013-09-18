@@ -9,10 +9,14 @@ PDFs are generated using Prawn. Built with Twitter Bootstrap because lazy.
 
 The current version of this project only creates PDFs. Future versions will be more workbench-style and will have tech editing, test knitting, and drafting capabilities.
 
+#### test todos
+
+- complete controller specs
+- complete request specs
+
 #### todo
 
 - format pdf (this is always a todo)
-- moar tests (always moar tests)
 - validations on models (whoops...)
 - math functions for sizing patterns?
 - figure out how to work flat v. round because some patterns have both
