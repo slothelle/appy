@@ -5,7 +5,6 @@ class CreateComments < ActiveRecord::Migration
       t.references :user
       t.text :body
       t.string :confidence
-      t.timestamps
     end
   end
 end
