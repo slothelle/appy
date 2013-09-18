@@ -19,8 +19,4 @@ class ChartLegendsController < ApplicationController
   def destroy
     ChartLegend.destroy(params[:id])
   end
-
-  def destroy
-    # more magic
-  end
 end

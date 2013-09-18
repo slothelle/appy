@@ -1,11 +1,4 @@
 module SeederHelper
-  def seed
-    # FactoryGirl.create(:garment)
-    # FactoryGirl.create(:needle)
-    # FactoryGirl.create(:another_needle)
-    # FactoryGirl.create(:yarn_weight)
-  end
-
   def make_pattern
     FactoryGirl.create(:pattern)
   end
