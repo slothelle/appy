@@ -1,19 +1,6 @@
 require 'spec_helper'
 
 describe 'User' do
-  before do
-    seed
-  end
-
-  context 'logged in' do
-    before do
-      login
-    end
-
-    it "does things"
-  end
-
-  context 'logged out' do
-    it "doesn't do anything"
-  end
+  # There is a before_filter on every page that requires login
+  # Test the different user roles here - admin, editor, tester
 end

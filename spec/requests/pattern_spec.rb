@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe 'Pattern' do
-  it "does things"
+  # New, edit, pdf (?)
 end

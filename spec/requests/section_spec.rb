@@ -1,9 +1,5 @@
 require 'spec_helper'
 
 describe 'Section' do
-  before do
-    seed
-  end
-
-  it "does things"
+  # These are nested within Patterns so they are covered there
 end
