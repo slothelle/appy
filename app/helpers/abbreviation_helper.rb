@@ -16,4 +16,15 @@ module AbbreviationHelper
     rpts: "repeat/s",
     tbl: "through the back loop"
   }
+
+  def combine_stitches_with_definitions(stitches, definitions)
+    stitches.values.zip(definitions.values)
+  end
+
+  def create_abbreviations(nested_abbrevs, pattern)
+    nested_abbrevs.each do |sts, defs|
+      next if sts == "" || defs == ""
+      Abbreviation.create(stitch: sts, definition: defs, pattern: pattern)
+    end
+  end
 end
