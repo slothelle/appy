@@ -5,7 +5,10 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   def resolved?
-    return "Yes" if resolved != nil
-    return "No"
+    if resolved != nil && resolved != ""
+      "Yes"
+    else
+      "No"
+    end
   end
 end
