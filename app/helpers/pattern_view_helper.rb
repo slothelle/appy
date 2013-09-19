@@ -10,6 +10,13 @@ module PatternViewHelper
   end
 
   def pattern_meets_pdf_requirements?(p)
-    p.images? && p.abbrevs? && p.charts? && p.chart_legends?
+    reqs = p.images? && p.abbrevs?
+    if reqs && p.charts? && p.chart_legends?
+      true
+    elsif reqs
+      true
+    else
+      false
+    end
   end
 end
