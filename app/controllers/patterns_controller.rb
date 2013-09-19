@@ -13,7 +13,7 @@ class PatternsController < ApplicationController
 
   def create
     @pattern = Pattern.create(params[:pattern])
-    redirect_to @pattern
+    redirect_to patterns_path
   end
 
   def edit
