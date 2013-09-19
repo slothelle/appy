@@ -9,6 +9,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'slim-rails'
 gem "twitter-bootstrap-rails"
+gem 'aws-sdk', '~> 1.5.7'
 
 gem 'nested_form'
 
