@@ -14,6 +14,12 @@ The current version of this project only creates PDFs. Future versions will be m
 - complete controller specs
 - complete request specs
 
+#### paperclip
+
+- set ENV
+- set ENV for heroku
+- test production
+
 #### todo
 
 - format pdf (this is always a todo)
