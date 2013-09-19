@@ -26,6 +26,7 @@ The current version of this project only creates PDFs. Future versions will be m
 - validations on models (whoops...)
 - math functions for sizing patterns?
 - figure out how to work flat v. round because some patterns have both
+- why isn't description working?
 
 #### workbench todo
 
