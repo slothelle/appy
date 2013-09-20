@@ -14,19 +14,25 @@ The current version of this project only creates PDFs. Future versions will be m
 - complete controller specs
 - complete request specs
 
-#### paperclip
+#### bugs
 
-- set ENV
-- set ENV for heroku
-- test production
+- why isn't description working?
+- paperclip in production (set ENV, set ENV in heroku, test production)
 
-#### todo
+### reqs from erin
+
+- re-release boolean
+- who is in charge? field
+- target release date field
+- has errata boolean
+- errata fixed boolean
+
+#### new feature todos
 
 - format pdf (this is always a todo)
 - validations on models (whoops...)
 - math functions for sizing patterns?
 - figure out how to work flat v. round because some patterns have both
-- why isn't description working?
 
 #### workbench todo
 
