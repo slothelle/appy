@@ -26,6 +26,7 @@ The current version of this project only creates PDFs. Future versions will be m
 - target release date field
 - has errata boolean
 - errata fixed boolean
+- improve pattern library display (sort by target date, needs errata, etc)
 
 #### new feature todos
 
