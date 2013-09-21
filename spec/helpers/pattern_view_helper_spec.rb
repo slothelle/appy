@@ -38,7 +38,7 @@ describe PatternViewHelper do
 
     describe "images and abbrevs" do
       before do
-        @pattern = FactoryGirl.create(:pattern)
+        @pattern = make_pattern
       end
 
       it "should return false if missing both" do
@@ -46,22 +46,22 @@ describe PatternViewHelper do
       end
 
       it "should return true if both are present" do
-        @pattern.images << FactoryGirl.create(:image)
-        @pattern.abbreviations << FactoryGirl.create(:abbreviation)
+        @pattern.images << make_image_with_pattern
+        @pattern.abbreviations << make_abbrev_with_pattern
         expect(pattern_meets_pdf_requirements?(@pattern)).to be_true
       end
 
       it "should return false if one is missing" do
-        @pattern.images << FactoryGirl.create(:image)
+        @pattern.images << make_image_with_pattern
         expect(pattern_meets_pdf_requirements?(@pattern)).to be_false
       end
     end
 
     describe "charts and chart legends" do
       before do
-        @pattern = FactoryGirl.create(:pattern)
-        @pattern.images << FactoryGirl.create(:image)
-        @pattern.abbreviations << FactoryGirl.create(:abbreviation)
+        @pattern = make_pattern
+        @pattern.images << make_image_with_pattern
+        @pattern.abbreviations << make_abbrev_with_pattern
       end
 
       it "should return true if missing both" do
@@ -69,13 +69,13 @@ describe PatternViewHelper do
       end
 
       it "should return false if missing one" do
-        @pattern.chart_legends << FactoryGirl.create(:chart_legend)
+        @pattern.chart_legends << make_chart_legend_with_pattern
         expect(pattern_meets_pdf_requirements?(@pattern)).to be_false
       end
 
       it "should return true if both are present" do
         @pattern.charts << FactoryGirl.create(:chart)
-        @pattern.chart_legends << FactoryGirl.create(:chart_legend)
+        @pattern.chart_legends << make_chart_legend_with_pattern
         expect(pattern_meets_pdf_requirements?(@pattern)).to be_true
       end
     end

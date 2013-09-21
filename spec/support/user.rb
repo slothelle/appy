@@ -1,10 +1,10 @@
 module UserHelper
   def login_admin
-    user = make_editor
-    # visit login_path
-    # fill_in("session[email]", :with => "suzy@queue.com")
-    # fill_in("session[password]", :with => "password123456")
-    # click_button("Login")
+    user = make_admin
+    visit root_path
+    fill_in("session_email", :with => "suzy@queue.com")
+    fill_in("session_password", :with => "password123456")
+    click_button("Login")
   end
 
   def login_editor

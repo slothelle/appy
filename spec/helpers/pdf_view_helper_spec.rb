@@ -18,9 +18,9 @@ describe PdfViewHelper do
 
   context '#format_rows_for' do
     before do
-      @section = FactoryGirl.create(:section)
+      @section = make_section_with_pattern
       5.times do
-        @section.rows << FactoryGirl.create(:row)
+        @section.rows << make_row_with_section_pattern
       end
       @section.rows[0].stitch_count = ""
     end
