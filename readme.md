@@ -17,9 +17,8 @@ The current version of this project only creates PDFs. Future versions will be m
 #### bugs
 
 - why isn't description working?
-- paperclip in production (set ENV, set ENV in heroku, test production)
 
-### reqs from erin
+#### reqs from erin
 
 - re-release boolean
 - who is in charge? field
