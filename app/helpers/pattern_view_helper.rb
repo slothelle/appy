@@ -13,7 +13,7 @@ module PatternViewHelper
     reqs = p.images? && p.abbrevs?
     if reqs && p.charts? && p.chart_legends?
       true
-    elsif reqs
+    elsif reqs && !p.charts? && !p.chart_legends?
       true
     else
       false
