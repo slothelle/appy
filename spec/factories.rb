@@ -59,7 +59,6 @@ FactoryGirl.define do
     num             "1"
     instructions    "k all sts."
     stitch_count    "12"
-    pattern
     section
   end
 
