@@ -33,7 +33,7 @@ pdf.bounding_box([0, 710], :width => 540, :height => pdf.bounds.height - 40) do
   #
   # => TITLE IMAGE
   #
-  pdf.image open("#{@pattern.images.first.photo.path(:large)}")
+  pdf.image open("#{@pattern.images.first.photo.url(:large)}")
   pdf.move_down(10)
 
   #
@@ -168,7 +168,7 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
     pdf.text "Charted Instructions", :align => :center, :size => 18
     @pattern.charts.each do |img|
       pdf.text img.name, :align => :center, :size => 12
-      pdf.image open("#{img.image.path(:large)}"), :position => :center
+      pdf.image open("#{img.image.url(:large)}"), :position => :center
       pdf.move_down 10
     end
     pdf.font(normaly)
@@ -183,7 +183,7 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
     pdf.fill_color "333333"
     pdf.text "Legend", :align => :center, :size => 14
     @pattern.chart_legends.each do |img|
-      pdf.image open("#{img.image.path(:medium)}"), :position => :center
+      pdf.image open("#{img.image.url(:medium)}"), :position => :center
     end
     pdf.font(normaly)
   end
@@ -198,7 +198,7 @@ pdf.bounding_box([0, 700], :width => 540, :height => pdf.bounds.height - 65) do
     pdf.fill_color "333333"
     pdf.text "Additional Images", :align => :center, :size => 18
     @pattern.images.each do |img|
-      pdf.image open("#{img.photo.path(:medium)}"), :position => :center
+      pdf.image open("#{img.photo.url(:medium)}"), :position => :center
       pdf.move_down 10
     end
     pdf.font(normaly)
