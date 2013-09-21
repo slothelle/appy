@@ -6,7 +6,7 @@ h2 <i class='icon-book'></i> Pattern Library
     .span2
       - if pattern_meets_pdf_requirements?(pattern)
         br
-        #{link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern.id, :format => "pdf"), { class: "btn btn-info" }}
+        #{link_to "<i class='icon-file'></i> &nbsp; PDF".html_safe, pattern_path(pattern, :format => "pdf"), { class: "btn btn-info" }}
       p
       - if pattern.testing?
         #{link_to "<i class='icon-thumbs-up'></i> &nbsp; Review".html_safe, pattern_comments_path(pattern), { class: "btn btn-warning" }}
