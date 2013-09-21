@@ -11,7 +11,7 @@ The current version of this project only creates PDFs. Future versions will be m
 
 #### test todos
 
-- complete controller specs
+- complete helper specs
 - complete request specs
 
 #### bugs
@@ -20,15 +20,11 @@ The current version of this project only creates PDFs. Future versions will be m
 
 #### reqs from erin
 
-- re-release boolean
-- who is in charge? field
-- target release date field
-- has errata boolean
-- errata fixed boolean
 - improve pattern library display (sort by target date, needs errata, etc)
 
 #### new feature todos
 
+- add new fields to #new, #edit, #index views
 - format pdf (this is always a todo)
 - validations on models (whoops...)
 - math functions for sizing patterns?

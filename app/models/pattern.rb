@@ -1,5 +1,5 @@
 class Pattern < ActiveRecord::Base
-  attr_accessible :name, :gauge, :yarn, :yarn_info, :needle, :notions, :description, :finished_sizes, :instructions, :sections_attributes, :rows_attributes, :abbreviations_attributes, :version, :chart_legends_attributes, :state, :free
+  attr_accessible :name, :gauge, :yarn, :yarn_info, :needle, :notions, :description, :finished_sizes, :instructions, :sections_attributes, :rows_attributes, :abbreviations_attributes, :version, :chart_legends_attributes, :state, :free, :re_release, :user_id, :target_date, :errata, :errata_fixed
 
   has_many :sections
   has_many :rows, :through => :sections
@@ -8,6 +8,7 @@ class Pattern < ActiveRecord::Base
   has_many :charts
   has_many :chart_legends
   has_many :comments
+  belongs_to :user
 
   accepts_nested_attributes_for :sections
   accepts_nested_attributes_for :rows
@@ -15,6 +16,7 @@ class Pattern < ActiveRecord::Base
   accepts_nested_attributes_for :charts
   accepts_nested_attributes_for :chart_legends
 
+  # Helpers for attributes
   def images?
     return true if images.length > 0
   end
@@ -50,5 +52,9 @@ class Pattern < ActiveRecord::Base
 
   def draft?
     return true if state == "draft"
+  end
+
+  def has_errors?
+    return true if errata && (errata_fixed == nil || errata_fixed == "")
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130917005616) do
+ActiveRecord::Schema.define(:version => 20130921130950) do
 
   create_table "abbreviations", :force => true do |t|
     t.string   "stitch"
@@ -64,6 +64,11 @@ ActiveRecord::Schema.define(:version => 20130917005616) do
     t.string   "version"
     t.string   "free"
     t.string   "state"
+    t.string   "re_release"
+    t.integer  "user_id"
+    t.date     "target_date"
+    t.string   "errata"
+    t.string   "errata_fixed"
   end
 
   create_table "rows", :force => true do |t|

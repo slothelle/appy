@@ -19,6 +19,12 @@ describe Pattern do
   it { should allow_mass_assignment_of(:chart_legends_attributes) }
   it { should allow_mass_assignment_of(:state) }
   it { should allow_mass_assignment_of(:free) }
+  it { should allow_mass_assignment_of(:re_release) }
+  it { should allow_mass_assignment_of(:user_id) }
+  it { should allow_mass_assignment_of(:target_date) }
+  it { should allow_mass_assignment_of(:errata) }
+  it { should allow_mass_assignment_of(:errata_fixed) }
+  it { should belong_to(:user) }
   it { should have_many(:rows) }
   it { should have_many(:sections) }
   it { should have_many(:images) }
@@ -166,6 +172,27 @@ describe Pattern do
         @pattern.state = "testing"
         expect(@pattern.draft?).to be_false
       end
+    end
+  end
+
+  describe "#has_errors?" do
+    before do
+      @pattern = FactoryGirl.create(:pattern)
+    end
+
+    it "should return true if pattern has errata and it is not fixed" do
+      @pattern.errata = "1"
+      expect(@pattern.has_errors?).to be_true
+    end
+
+    it "should return false if pattern has no errata" do
+      expect(@pattern.has_errors?).to be_false
+    end
+
+    it "should return false if pattern has errata and it is fixed" do
+      @pattern.errata = "1"
+      @pattern.errata_fixed = "1"
+      expect(@pattern.has_errors?).to be_false
     end
   end
 end
