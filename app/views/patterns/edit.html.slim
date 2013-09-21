@@ -5,8 +5,6 @@
       = render partial: "shared/missing_abbrevs", locals: { pattern: @pattern }
     - if !@pattern.images?
       = render partial: "shared/missing_images", locals: { pattern: @pattern }
-    - else
-      p.text-center = image_tag @pattern.images.first.photo(:large)
     - if !@pattern.charts?
       = render partial: "shared/missing_charts", locals: { pattern: @pattern }
     - if (@pattern.charts? && !@pattern.chart_legends?)
