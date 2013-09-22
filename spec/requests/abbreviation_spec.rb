@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe 'Abbreviation' do
   before do
-    login_admin
-    @pattern = make_pattern
-    visit patterns_path
+    login_admin_patterns_index
   end
 
   context 'from Patterns#index' do
@@ -38,13 +36,15 @@ describe 'Abbreviation' do
       page.assert_selector('input[type=text]', count: 50)
     end
 
-    AbbreviationHelper::ABBREVIATIONS.each do |st, defi|
-      it "should display a text field with #{st} as stitch" do
-        expect(page).to have_xpath("//input[@value='#{st}']")
-      end
+    describe 'displaying ABBREVIATIONS stitches' do
+      AbbreviationHelper::ABBREVIATIONS.each do |st, defi|
+        it "a text field with #{st} as stitch" do
+          expect(page).to have_xpath("//input[@value='#{st}']")
+        end
 
-      it "should display a text field with #{defi} as definition" do
-        expect(page).to have_xpath("//input[@value='#{defi}']")
+        it "a text field with #{defi} as definition" do
+          expect(page).to have_xpath("//input[@value='#{defi}']")
+        end
       end
     end
   end
