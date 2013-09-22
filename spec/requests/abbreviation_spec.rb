@@ -54,7 +54,9 @@ describe 'Abbreviation' do
       visit new_pattern_abbreviation_path(@pattern)
     end
 
-    it 'should create abbreviations for the pattern'
-    it 'should create an abbreviation for each stitch/definition pair'
+    it 'should create abbreviations for the pattern' do
+      click_on("Add Abbreviations to #{@pattern.name}")
+      expect(@pattern.abbreviations.length).to eq(15)
+    end
   end
 end
