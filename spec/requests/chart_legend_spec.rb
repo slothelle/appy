@@ -29,7 +29,7 @@ describe 'ChartLegend' do
 
       it 'should provide an option to add/edit chart legends' do
         click_link("Edit...")
-        expect(page).to have_content("Chart Legends")
+        expect(page).to have_selector("li.edit-legends")
       end
     end
   end
