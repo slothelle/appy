@@ -18,5 +18,6 @@ class ChartLegendsController < ApplicationController
 
   def destroy
     ChartLegend.destroy(params[:id])
+    redirect_to patterns_path
   end
 end
