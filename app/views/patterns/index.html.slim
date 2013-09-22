@@ -19,11 +19,11 @@ h2 <i class='icon-book'></i> Pattern Library
       .btn-group
         a.btn.dropdown-toggle data-toggle="dropdown" href="#" <i class='icon-pencil'></i> &nbsp; Edit... <span class="caret"></span>
         ul.dropdown-menu
-          li = link_to "<i class='icon-pencil'></i> &nbsp; Pattern".html_safe, edit_pattern_path(pattern.id)
-          li = link_to "<i class='icon-camera'></i> &nbsp; Images".html_safe, new_pattern_image_path(pattern)
-          li = link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Charts".html_safe, new_pattern_chart_path(pattern)
+          li.edit-pattern = link_to "<i class='icon-pencil'></i> &nbsp; Pattern".html_safe, edit_pattern_path(pattern.id)
+          li.edit-images = link_to "<i class='icon-camera'></i> &nbsp; Images".html_safe, new_pattern_image_path(pattern)
+          li.edit-charts = link_to "<i class='icon-ellipsis-horizontal'></i> &nbsp; Charts".html_safe, new_pattern_chart_path(pattern)
           - if pattern.charts?
-            li = link_to "<i class='icon-key'></i> &nbsp; Chart Legends".html_safe, new_pattern_chart_legend_path(pattern)
+            li.edit-legends = link_to "<i class='icon-key'></i> &nbsp; Chart Legends".html_safe, new_pattern_chart_legend_path(pattern)
 
     .span9
       h4 #{pattern.name} <small class="pull-right">Version #{pattern.version}</small>
